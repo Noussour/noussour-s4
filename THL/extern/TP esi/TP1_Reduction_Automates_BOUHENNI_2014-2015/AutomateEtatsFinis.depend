@@ -1,0 +1,37 @@
+# depslib dependency file v1.0
+1414365792 source:e:\1cs\thp\automateetatsfinis\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"fonctions.h"
+
+1414365640 source:e:\1cs\thp\automateetatsfinis\fonctions.c
+	<stdlib.h>
+	<stdio.h>
+	"fonctions.h"
+	<string.h>
+
+1414364557 e:\1cs\thp\automateetatsfinis\fonctions.h
+
+1414752564 source:e:\1cs\thl\automateetatsfinis\fonctions.c
+	<stdlib.h>
+	<stdio.h>
+	"fonctions.h"
+	<string.h>
+
+1414752560 e:\1cs\thl\automateetatsfinis\fonctions.h
+
+1414752566 source:e:\etudes esi\1cs1\thl\tp1\automates_etats_finis\fonctions.c
+	<stdlib.h>
+	<stdio.h>
+	"fonctions.h"
+	<string.h>
+
+1414752562 e:\etudes esi\1cs1\thl\tp1\automates_etats_finis\fonctions.h
+
+1414777850 source:e:\etudes esi\1cs1\thl\tp1\automates_etats_finis\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"fonctions.h"
+
