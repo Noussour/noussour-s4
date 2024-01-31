@@ -1,0 +1,74 @@
+# depslib dependency file v1.0
+1414795495 source:e:\1cs\thp\automate_generalise\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"fonctions.h"
+
+1414782766 e:\1cs\thp\automate_generalise\fonctions.h
+
+1414794726 source:e:\1cs\thp\automate_generalise\fonctions.c
+	<stdlib.h>
+	<stdio.h>
+	"fonctions.h"
+	<string.h>
+
+1415391587 source:e:\1cs\thl\tp2\automate_generalise\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"fonctions.h"
+	"affichage.h"
+
+1415357435 e:\1cs\thl\tp2\automate_generalise\fonctions.h
+
+1415391431 source:e:\1cs\thl\tp2\automate_generalise\fonctions.c
+	<stdlib.h>
+	<stdio.h>
+	"fonctions.h"
+	"affichage.h"
+	<string.h>
+
+1415384130 source:e:\1cs\thl\tp2\automate_generalise\affichage.c
+	<stdlib.h>
+	<stdio.h>
+	<string.h>
+	"affichage.h"
+	"fonctions.h"
+	<windows.h>
+
+1250337474 e:\1cs\thl\tp2\automate_generalise\conio\conio.h
+	<_mingw.h>
+
+1091567952 e:\1cs\thl\tp2\automate_generalise\conio\conio2.h
+	<conio.h>
+	<windows.h>
+
+1415182353 e:\1cs\thl\tp2\automate_generalise\affichage.h
+
+1415384132 source:e:\etudes esi\1cs1\thl\tp2\automate_generalise\affichage.c
+	<stdlib.h>
+	<stdio.h>
+	<string.h>
+	"affichage.h"
+	"fonctions.h"
+	<windows.h>
+
+1415182354 e:\etudes esi\1cs1\thl\tp2\automate_generalise\affichage.h
+
+1415357436 e:\etudes esi\1cs1\thl\tp2\automate_generalise\fonctions.h
+
+1415460570 source:e:\etudes esi\1cs1\thl\tp2\automate_generalise\fonctions.c
+	<stdlib.h>
+	<stdio.h>
+	"fonctions.h"
+	"affichage.h"
+	<string.h>
+
+1415391588 source:e:\etudes esi\1cs1\thl\tp2\automate_generalise\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"fonctions.h"
+	"affichage.h"
+
