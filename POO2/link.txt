@@ -3,3 +3,6 @@ https://www.youtube.com/watch?v=ZfOljMf7L-o&list=PLOUYE-KsFYc_0ekC_3EEAIkiRuEIay
 
 Swing JAVA Course :
 https://youtu.be/Kmgo00avvEw?si=Nb4tY39GTfCyVp8Z
+
+Checked vs Uncheched Exceptions :
+https://youtu.be/bCPClyGsVhc?si=DmuwktYDPXu5VGqS
