@@ -1,0 +1,4 @@
+? A ? Annonce : 
+? Z=(O,E,J,T) ? "Emettre" tq [ ((O,A) ? "Se concrétiser") ^ (J=A->Clé->Journal)] 
+
+

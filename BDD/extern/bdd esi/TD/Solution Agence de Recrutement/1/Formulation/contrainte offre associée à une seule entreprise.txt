@@ -1,0 +1,14 @@
+? x ? ?
+
+? O ? "Offre" : 
+
+(? E1,E2 ? "Entreprise", ? J1,J2 ? "Journal" , ? D1,D2 ? "Date"
+tq : (O,E1,J1,D1) ? "Emettre" ^ (O,E2,J2,D2) ? "Emettre")
+=> E1=E2.
+
+
+
+
+
+
+ 

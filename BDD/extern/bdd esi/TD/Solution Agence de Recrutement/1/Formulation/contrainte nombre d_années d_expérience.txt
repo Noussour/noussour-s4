@@ -1,0 +1,4 @@
+? D ? DemandeurEmploi , ?(O,A) ? "Se concrétiser" :
+(D,A) ? "Postuler" => D.ExpériencePossédée >= O.ExpérienceRequise
+
+

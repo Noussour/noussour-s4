@@ -1,0 +1,7 @@
+? E ? "Entreprise" , ? J ? "Journal", ? DEM ? "Date", ? O ? "Offre" :
+
+[ (E,J,O,DEM) ? "Emmettre" 
+
+=> ? T ? "Date" : ((E,J,T) ? "S'abonner") ^ (T<=DEM) ^ ((E,J,T)."DateExpiration">DEM) ]
+
+

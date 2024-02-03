@@ -1,0 +1,68 @@
+
+- Creation d'une table
+
+CREATE TABLE *nom table* (
+*colonne* *type*
+...
+CONSTRAINT clé_primaire PRIMARY KEY (*clé primaire*));
+
+
+
+- Ajout d'un tuplet
+
+INSERT INTO *nom table* (*colonnes*)
+VALUES (*valeurs*);
+
+
+
+- Selection
+
+SELECT *colonne*				(colonne a afficher)
+FROM *table*					(table a utiliser)
+WHERE *condition*				(condition de selection)
+GROUP BY *colonne*				(regroupement d'une colonne)
+HAVING *condition*				(condition de regroupement)
+ORDER BY *colonne* AVG			(tri croissant)
+ORDER BY *colonne* DESC			(tri decroissant)
+
+
+
+- Mise a jour
+
+UPDATE *table*					(table ciblé)
+SET *colonne* = *valeur*		(colonnes et modifications)
+WHERE *condition*				(condition de mise a jour)
+
+
+
+- Suppression
+
+DELETE FROM *table*				(table ciblé)
+WHERE *condition*				(condition de suppression)
+
+
+
+- Fonctions
+COUNT()			(conteur)
+MIN()			(minimum)
+MAX()			(maximum)
+SUM()			(somme)
+AVG()			(moyenne)
+
+a utiliser dans WHERE
+IN 				(inclure "avec une autre requete")
+NOT IN 			(exclure "avec une autre requete")
+LIKE			(recherche par nom)
+
+
+
+- Affichage d'un couple
+SELECT DISTINCT O1.*colonne1*, O2.*colonne1*
+FROM *table1* AS O1 INNER JOIN *table1* AS O2 ON O1.*clé1*=O2.*clé1*
+WHERE *condition en utilisant O1.*colonne2* ou O2.*colonne2**;
+
+
+
+REMARQUE :
+a la fin de chaque requete un ; est obligatoire
+dsl pour le retard et peut etre que kaynin des choses na9sin 9oulli ou qlq chose du genre et merci pour tous

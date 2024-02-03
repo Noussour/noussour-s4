@@ -1,0 +1,13 @@
+1. Une entreprise ne peut se réabonner au même journal 
+que si l'abonnement précédent a expiré.
+2. Les entreprises et les demandeurs d'emploi forment une partition 
+des clients de l'agence.
+3. L'émission des offres d'emploi se fait dans le cadre d'un 
+abonnement actif.
+4. La publication de l'annonce se fait dans l'une des éditions 
+d'un des journaux où l'offre a été émise.
+5. Le demandeur d'emploi ne peut postuler qu'aux annonces dont le
+nombre d'années d'expérience requis est supérieur ou égal à son nombre
+d'années d'expérience
+
+ 

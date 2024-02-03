@@ -1,0 +1,12 @@
+? x ? "Entreprise", ? y ? "Journal" , ? t1,t2 ? "Date" tq t1<t2: 
+(x,y,t1) ? "S'abonner" ^ (x,y,t2) ? "S'abonner" =>  
+t2>(x,y,t1)."DateExpiration"
+
+Explication :
+
+Si une entreprise s'est abonné deux fois au même journal alors
+son deuxième abonnement s'est fait après la date d'expiration du 
+premier abonnement.
+
+
+ 

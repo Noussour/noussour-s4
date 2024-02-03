@@ -1,0 +1,327 @@
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+** LE  nombre de personnes qui ont marqué un but : 
+
+- show databases
+- connect dzfoot
+- source "chemin" // pour executer le script de création des tables
+- show tables
+- desc "nom de la table"
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+** Nombre de buts marqués par chaque joueurs par ordre décroissant du nombre de but
+
+SELECT *
+FROM Joueur j
+JOIN
+(SELECT m.NumeroJoueur, m.equipe, COUNT(*) AS NbrBUTS 
+FROM dzfoot.Marquer m 
+Group BY m.NumeroJoueur, m.equipe
+ORDER BY NbrBUTS DESC) AS A
+ON j.numero = A.NumeroJoueur
+AND j.equipe = A.equipe
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+Partie 1 :
+
+7 . select count(*) from Rencontre;
+
+10. Alter table Joueur add column age tinyint not null;
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+Partie 2 :
+
+2. Select nom from Joueur where Equipe='JSK';
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+3. SELECT * FROM dzfoot.Rencontre r where r.EquipeA IN ('USMA,'MCA') and r.EquipeB IN ('USMA,'MCA');  // Car EquipeA!=EquipeB
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+4. 
+
+
+SELECT Sigle,
+    (SELECT 4*Count(*) AS NbPtGagne 
+    FROM Rencontre
+    WHERE (EquipeA = Sigle AND ButsEquipeA > ButsEquipeB)
+     OR (EquipeB=Sigle AND ButsEquipeB > ButsEquipeA)
+	 )+ 
+    (SELECT Count(*) AS NbPtNull
+     FROM Rencontre
+     WHERE (EquipeA = Sigle OR EquipeB = Sigle)
+     AND ButsEquipeA = ButsEquipeB)
+     AS NbPt
+FROM Equipe
+Order By NBPt DESC
+
+----------
+Ou
+
+SELECT sigle, 
+(SELECT 4*(SELECT count(*) FROM Rencontre 
+           					Where EquipeA=sigle 
+           					AND ButsEquipeA > ButsEquipeB
+           					Or EquipeB = sigle
+           					AND ButsEquipeB > ButsEquipeA)
+ 		+ (SELECT count(*) FROM Rencontre
+           					Where (EquipeA=sigle or EquipeB=sigle)
+           					AND ButsEquipeA=ButsEquipeB)) As Resultat
+               FROM Equipe
+               Order by resultat DESC
+
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+5. Meilleur Buteur :   // Ou ceux qui ont marqué le moins de buts
+
+
+SELECT m.NumeroJoueur AS j, m.Equipe AS e, Count(*) AS cpt 
+FROM dzfoot.marquer m
+Group BY j,e-- 
+having cpt=
+(
+SELECT MAX(NbrBUTS)        
+FROM (
+SELECT m.NumeroJoueur, m.Equipe, COUNT(*) AS NbrBUTS 
+FROM dzfoot.Marquer m 
+Group BY m.NumeroJoueur, m.Equipe) AS C)
+
+*Avec plus d'attibuts :
+
+SELECT *
+FROM joueur,
+
+(SELECT m.NumeroJoueur AS numJoueur, m.Equipe AS equipe, Count(*) AS cpt 
+FROM dzfoot.marquer m
+Group BY numJoueur, equipe
+having cpt=
+(
+SELECT MAX(NbrBUTS)        
+FROM (
+SELECT m.NumeroJoueur, m.Equipe, COUNT(*) AS NbrBUTS 
+FROM dzfoot.Marquer m 
+Group BY m.NumeroJoueur, m.Equipe) AS C)) AS G
+WHERE Joueur.Numero =  G.NumJoueur
+AND Joueur.Equipe = G.Equipe
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+6.Champion d'Algérie :
+MAX de la requete 4.
+
+
+SELECT *
+FROM Equipe,
+(SELECT Sigle, MAX(NbPt)
+FROM
+(SELECT Sigle,
+    (SELECT 4*Count(*) AS NbPtGagne 
+    FROM Rencontre
+    WHERE (EquipeA = Sigle AND ButsEquipeA > ButsEquipeB)
+     OR (EquipeB=Sigle AND ButsEquipeB > ButsEquipeA) )+ 
+    (SELECT Count(*) AS NbPtNull
+     FROM Rencontre
+     WHERE (EquipeA = Sigle OR EquipeB = Sigle)
+     AND ButsEquipeA = ButsEquipeB) AS NbPt
+FROM Equipe
+Order By NBPt DESC) AS C) AS B
+WHERE B.Sigle = Equipe.Sigle
+
+// Si il y en a plusieurs ce n'est pas comme ça
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+7. L'quipe qui a perdu le moin de match :
+
+
+
+SELECT * 
+FROM Equipe, (SELECT Sigle, count(*) As NombreDefaite
+FROM Rencontre, Equipe
+Where (EquipeA = Sigle AND ( ButsEquipeA < ButsEquipeB))
+OR (EquipeB = Sigle AND (ButsEquipeB < ButsEquipeA))
+Group By Sigle
+HAving NombreDefaite = 
+(
+SELECT MIN(NombreDefaite)
+FROM
+(
+    SELECT Sigle, count(*) As NombreDefaite
+FROM Rencontre, Equipe
+Where (EquipeA = Sigle AND ( ButsEquipeA < ButsEquipeB))
+OR (EquipeB = Sigle AND (ButsEquipeB < ButsEquipeA))
+Group By Sigle
+ORDER By NombreDefaite DESC
+    ) AS A)) AS B
+    Where B.Sigle = Equipe.Sigle
+
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+8. Moyenne de rencontre par stade 
+
+
+SELECT AVG(NBRencontres) MoyenneRencontre
+FROM
+(
+    	SELECT Stade, COUNT(numeroRencontre) NBRencontres
+    	FROM Rencontre
+    	Group BY Stade
+   ) 
+   AS F
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+9. Meilleure Défense 
+
+SELECT *
+FROM Equipe, (SELECT Sigle,
+
+(SELECT SUM(ButsEquipeB) 
+FROM `rencontre`
+WHERE EquipeA = Sigle)
++ 
+(SELECT SUM(ButsEquipeA) 
+FROM `rencontre`
+WHERE EquipeB = Sigle)
+                  
+AS cpt
+
+FROM Equipe
+Group By Sigle
+
+Having cpt = (SELECT MIN(NombreButsRecu) AS minNBRButRecu
+FROM (
+
+SELECT Sigle,
+
+(SELECT SUM(ButsEquipeB) 
+FROM `rencontre`
+WHERE EquipeA = Sigle)
++ 
+(SELECT SUM(ButsEquipeA) 
+FROM `rencontre`
+WHERE EquipeB = Sigle)
+                  
+AS NombreButsRecu
+
+FROM Equipe
+Group By Sigle) AS A)) AS B
+Where Equipe.Sigle = B.Sigle
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+10. Meilleure Attaque 
+
+SELECT *
+FROM Equipe, (SELECT Sigle,
+
+(SELECT SUM(ButsEquipeA) 
+FROM `rencontre`
+WHERE EquipeA = Sigle)
++ 
+(SELECT SUM(ButsEquipeB) 
+FROM `rencontre`
+WHERE EquipeB = Sigle)
+                  
+AS cpt
+
+FROM Equipe
+Group By Sigle
+
+Having cpt = (SELECT MAX(NombreButsRecu) AS minNBRButRecu
+FROM (
+
+SELECT Sigle,
+
+(SELECT SUM(ButsEquipeB) 
+FROM `rencontre`
+WHERE EquipeB = Sigle)
++ 
+(SELECT SUM(ButsEquipeA) 
+FROM `rencontre`
+WHERE EquipeA = Sigle)
+                  
+AS NombreButsRecu
+
+FROM Equipe
+Group By Sigle) AS A)) AS B
+Where Equipe.Sigle = B.Sigle
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+11. Qui a gagnée la la rencontre aLLE entre le MCA et La JSK
+
+SELECT *,
+CASE 
+      WHEN ButsEquipeA > butsEquipeB THEN EquipeA
+      WHEN ButsEquipeB > butsEquipeA THEN EquipeB
+      ELSE 'Match Null'
+END
+AS EquipeGagnante
+FROM
+(SELECT* FROM `rencontre`
+Where EquipeA IN ("MCA","JSK") AND EquipeB  IN ("MCA","JSK")
+
+ORDER By DateRencontre ASC  -- DESC Pour le match retour
+Limit 1) AS D
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+12. Qui a marqué le but le plus rapide du championat
+
+SELECT *
+FROM Marquer JOIN Joueur
+ON 
+(
+    Joueur.Numero = Marquer.NumeroJoueur
+AND
+    Joueur.Equipe = Marquer.Equipe
+   )
+Order By MinuteBut ASC
+Limit 1
+
+
+// A supposer qu'il y en a qu'un seul
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+13. Quelle est l'équipe qui a fait le plus de match nul 
+
+
+
+
+SELECT *
+FROM Equipe, (SELECT Sigle, 
+(SELECT count(*)
+ FROM Rencontre
+ Where EquipeA = Sigle
+ AND ButsequipeA = ButsEquipeB)
+ +
+ (SELECT count(*)
+ FROM Rencontre
+ Where EquipeB = Sigle
+ AND ButsequipeA = ButsEquipeB)
+ 
+ AS cpt
+ 
+ From Equipe
+ 
+ having cpt = 
+(
+
+SELECT MAX(NombreMatchNull) 
+FROM
+(SELECT Sigle, 
+(SELECT count(*)
+ FROM Rencontre
+ Where EquipeA = Sigle
+ AND ButsequipeA = ButsEquipeB)
+ +
+ (SELECT count(*)
+ FROM Rencontre
+ Where EquipeB = Sigle
+ AND ButsequipeA = ButsEquipeB) AS NombreMatchNull
+ From Equipe) AS C)) AS B
+ Where Equipe.Sigle = B.Sigle
+
+
+
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+14. Quelle est l'équipe qui est descendue en 2ème division 
+
+Requete 4 avec un
+Order By NBPoints ASC
+LIMIT 3
+
+
+
