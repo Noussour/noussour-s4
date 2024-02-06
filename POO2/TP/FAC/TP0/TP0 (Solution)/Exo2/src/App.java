@@ -3,7 +3,7 @@ import java.util.Scanner;
 public class App {
     public static void main(String[] args) throws Exception {
         //TEST
-        // Citoyen adel = new Citoyen("HADJ ARAB", "adel", 32, 3218, "omar nahnah", "belcourt");
+        // Citoyen adel = new Citoyen("mo7", "adel", 32, 3218, "omar nahnah", "belcourt");
         // adel.afficher();
 
         //Question 3 :
