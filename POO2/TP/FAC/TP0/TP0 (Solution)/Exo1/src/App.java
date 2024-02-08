@@ -14,5 +14,8 @@ public class App {
         CompteBancaire compteEpargne = new CompteBancaire();
         //transferer les 100 unites  de compte vers compteEpargne
         compte.transferer(100, compteEpargne);
+
+        compte.afficher();
+        compteEpargne.afficher();
     }
 }
