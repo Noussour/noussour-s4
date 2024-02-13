@@ -1,13 +1,15 @@
 abstract public class Animal {
-    int poids ;
-    String coleur ;
+    int poids;
+    String coleur;
 
     void manger(){
-        System.out.println("Je mange de la viande");
+        System.out.println("Je suis un animal, et je mange de la viande");
     }
     void boire(){
-        System.out.println("Je bois de l'eau");
+        System.out.println("Je suis un animal, et je bois de l'eau");
     }
+
+    //Abstract
     abstract void deplacement();
     abstract void crier();
 

@@ -3,7 +3,7 @@ public class BB extends B implements Modifiable{
 
     public BB() {
         this.chaine = "BB";
-        this.numero = MAX;
+        this.numero = 200;
     }
 
     @Override
@@ -12,8 +12,13 @@ public class BB extends B implements Modifiable{
     }
 
     public void zoomer(int n) {
-        if (this.numero >= MIN) {
-            this.numero /= n;
-        }
+        if(n < MIN)
+            n = MIN;
+        if(n > MAX)
+            n = MAX;
+
+        if (n < 2)
+            this.numero /= 2;
+            
     }
 }

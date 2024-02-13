@@ -8,6 +8,7 @@ abstract public class Personne {
         this.prenom = prenom;
         this.rue = rue;
         this.ville = ville;
+        nbPersonnes++;
     }
 
 

@@ -1,6 +1,6 @@
 public class Loup extends Canin{
     @Override
     void crier() {
-        System.out.println("Je hurle à la lune");
+        System.out.println("J'hurle à la lune");
     }
 }

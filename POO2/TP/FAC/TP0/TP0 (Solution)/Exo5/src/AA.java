@@ -3,7 +3,7 @@ public class AA extends A implements Modifiable {
 
     public AA() {
         this.nom = "AA";
-        this.taille = MAX;
+        this.taille = 200;
     }
 
     @Override
@@ -16,8 +16,13 @@ public class AA extends A implements Modifiable {
     }
 
     public void zoomer(int n) {
-        if (this.taille >= MIN) {
-            this.taille /= n;
+        if(n < MIN)
+            n = MIN;
+        if(n > MAX)
+            n = MAX;
+
+        if (n >= 2) {
+            this.taille *= 2;
         }
     }
 }

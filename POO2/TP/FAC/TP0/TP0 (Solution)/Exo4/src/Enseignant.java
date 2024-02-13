@@ -7,7 +7,6 @@ public class Enseignant extends Personne {
         super(nom, prenom, rue, ville);
         this.specialite = specialite;
         nbEnseignants++;
-        nbPersonnes++;
     }
 
 

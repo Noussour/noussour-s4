@@ -6,3 +6,6 @@ https://youtu.be/Kmgo00avvEw?si=Nb4tY39GTfCyVp8Z
 
 Checked vs Uncheched Exceptions :
 https://youtu.be/bCPClyGsVhc?si=DmuwktYDPXu5VGqS
+
+Upcasting and Downcasting in java :
+https://youtu.be/HpuH7n9VOYk?si=uxUr1U-ciifmIyEC

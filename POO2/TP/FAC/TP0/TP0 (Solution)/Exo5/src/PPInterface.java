@@ -21,7 +21,7 @@ public class PPInterface {
             if (modifiable.getClass() == AA.class) {
                 modifiable.zoomer(2);
             } else {
-                modifiable.zoomer(4);
+                modifiable.zoomer(1);
             }
         }
 

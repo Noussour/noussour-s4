@@ -6,7 +6,6 @@ public class Secretaire extends Personne{
         super(nom, prenom, rue, ville);
         this.numBureau = numBureau;
         nbSecretaires++;
-        nbPersonnes++;
     }
     
     

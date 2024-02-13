@@ -7,7 +7,6 @@ public class Etudiant extends Personne {
         super(nom, prenom, rue, ville);
         Diplome = diplome;
         nbEtudiants++;
-        nbPersonnes++;
     }
 
 

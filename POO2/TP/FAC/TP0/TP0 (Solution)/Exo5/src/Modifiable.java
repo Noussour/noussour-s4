@@ -1,6 +1,6 @@
 public interface Modifiable {
-    final int MIN = 2;
-    final int MAX = 50;
+    final int MIN = 1;
+    final int MAX = 5;
 
     public void zoomer(int n);
 }
