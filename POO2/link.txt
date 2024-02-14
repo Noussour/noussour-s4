@@ -9,3 +9,12 @@ https://youtu.be/bCPClyGsVhc?si=DmuwktYDPXu5VGqS
 
 Upcasting and Downcasting in java :
 https://youtu.be/HpuH7n9VOYk?si=uxUr1U-ciifmIyEC
+
+Generics in java :
+https://youtu.be/K1iu1kXkVoA?si=H9ySPfhgpAgWlug5
+
+Hierarchy of Collection Framework in java :
+https://www.google.com/url?sa=i&url=https%3A%2F%2Fdata-flair.training%2Fblogs%2Fcollection-framework-in-java%2F&psig=AOvVaw1Rico5BGgZ7mOjROVMegvF&ust=1708035545289000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCOjgpLHuq4QDFQAAAAAdAAAAABBh
+
+Swing usefull documentation :
+https://www.javatpoint.com/java-swing
