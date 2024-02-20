@@ -5,10 +5,11 @@ public class App {
     public static void main(String[] args) throws GererException {
         //Question 1 :
         Scanner input = new Scanner(System.in);
-        System.out.print("Enter 1st number : ");
-        int num = input.nextInt();
-        System.out.print("Enter 2nd number : ");
-        int deno = input.nextInt();
+        int num, deno;
+        // System.out.print("Enter 1st number : ");
+        // int num = input.nextInt();
+        // System.out.print("Enter 2nd number : ");
+        // int deno = input.nextInt();
         // Division div = new Division(num, deno);
 
         // div.Division();
@@ -32,6 +33,9 @@ public class App {
         }
 
         try {
+            if (input.hasNextLine()) {  // Vider le buffer
+                input.nextLine();
+            }
             System.out.print("Enter 1st number : ");
             num = input.nextInt();
             System.out.print("Enter 2nd number : ");
@@ -47,7 +51,7 @@ public class App {
 
     public static void Test(int x, int y) throws GererException{
         if(x < y){
-            throw new GererException("Lociciel non valable");
+            throw new GererException("Logiciel non valable");
         }
     }
 }
