@@ -1,33 +1,34 @@
 package EXO1;
 
+import java.util.Arrays;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class MainExp {
     public static void main(String[] args) throws GererException {
-        Scanner scanner = new Scanner(System.in); int numerator , denominator;
+        Scanner scanner = new Scanner(System.in);
         try {
-            System.out.println("Entrez le numérateur : ");
-            numerator = scanner.nextInt();
+            Division division = new Division(scanner.nextInt(), scanner.nextInt());
+            System.out.println(division.divide());
+        }catch (GererException e) {
+
+
         }
-        catch (Exception e) {
-            System.out.println("Erreur de saisie");
-            return;
-        }
+        // or :
+        /*
         try {
-            System.out.println("Entrez le dénominateur : ");
-            denominator = scanner.nextInt();
+            Division division = new Division(scanner.nextInt(), scanner.nextInt());
+            System.out.println(division.divide());
+        }catch (GererException e){
+            System.out.println(e.getMessage());
+        }catch (ArithmeticException e){
+            System.out.println("Division sur 0 ");
+        }catch (InputMismatchException e){
+            System.out.println("Veuillez saisir un entier");
         }
-        catch (Exception e) {
-            System.out.println("Erreur de saisie");
-            return;
-        }
-        if(numerator < denominator) throw  new GererException("Logiciel non valable");
-        Division division = new Division(numerator, denominator);
-        try {
-            division.divide();
-        } catch (ArithmeticException e) {
-            System.out.println("Division par zéro impossible");
-        }
+         */
+
+        scanner.close();
 
 
 

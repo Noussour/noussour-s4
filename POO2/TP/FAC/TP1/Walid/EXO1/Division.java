@@ -5,13 +5,16 @@ public class Division {
     private int denominator;
 
 
-    public Division(int numerator, int denominator) {
+    public Division(int numerator, int denominator) throws GererException {
+        if (denominator == 0) {
+            throw new GererException("Logiciel non valable");
+        }
         this.numerator = numerator;
         this.denominator = denominator;
     }
 
-    public void divide() {
-        System.out.println(this.numerator + "/" + this.denominator + " = " + (this.numerator / this.denominator) );
+    public int divide() {
+        return this.numerator/this.denominator ;
     }
 
 }

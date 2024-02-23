@@ -1,7 +1,7 @@
 package EXO1;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws GererException {
         Division division = new Division(10, 3);
         division.divide();
     }
