@@ -2,14 +2,14 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class App {
-    public static void main(String[] args) throws Exception {
-        ArrayList<Octet> Octets = new ArrayList<Octet>();
+    public static void main(String[] args) {
+        ArrayList<Octet> Octets = new ArrayList<>();
         Scanner sc = new Scanner(System.in);
         System.out.print("Entrez le nombre d'octets que vous voulez utiliser : ");
         int nb = sc.nextInt();
 
         for (int i = 0; i < nb; i++) {
-            ArrayList<Bit> octet = new  ArrayList<Bit>();
+            ArrayList<Bit> octet = new  ArrayList<>();
             for (int j = 0; j < 8; j++) {
                 if (Math.random()  > 0.7) {
                     octet.add(new Bit(1));
@@ -20,7 +20,7 @@ public class App {
             Octets.add(new Octet(octet));
         }
 
-        ArrayList<Bit> octet1 = new  ArrayList<Bit>();
+        ArrayList<Bit> octet1 = new  ArrayList<>();
         for (int j = 0; j < 8; j++) {
             System.out.print("Bit" + (j+1) + ": ");
             int bit = sc.nextInt();
@@ -31,6 +31,7 @@ public class App {
         try {
             Octets.add(new Octet(octet1));
         } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
             for (int j = 0; j < 8; j++) {
                 octet1.set(j, new Bit(0));
             }

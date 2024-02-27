@@ -2,7 +2,7 @@ import java.util.ArrayList;
 
 public class Octet {
     //* Question 2 :
-    private ArrayList<Bit> octet =  new ArrayList<Bit>(8);
+    private final ArrayList<Bit> octet;
 
     public Octet(ArrayList<Bit> octet) {
         for (Bit bit : octet) {
@@ -16,17 +16,14 @@ public class Octet {
     public ArrayList<Bit> getOctet() {
         return octet;
     }
-    public void setOctet(ArrayList<Bit> octet) {
-        this.octet = octet;
-    }
 
     @Override
     public String toString() {
-        String resultat = "Octet : ";
+        StringBuilder resultat = new StringBuilder("Octet : ");
         for (Bit b : this.octet) {
-            resultat += b.getValue();
+            resultat.append(b.getValue());
         }
-        return resultat;
+        return resultat.toString();
     }
 
     public static Octet OrLogique(Octet o1, Octet o2){
