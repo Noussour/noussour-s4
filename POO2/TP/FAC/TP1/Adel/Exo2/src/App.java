@@ -3,14 +3,15 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class App {
-    public static void main(String[] args) throws Exception {
-        ArrayList<Article> stock = new ArrayList<Article>();  //Declaration of an arraylist for the stock of articles
+    public static void main(String[] args) {
+        ArrayList<Article> stock = new ArrayList<>();  //Declaration of an arraylist for the stock of articles
         Scanner input = new Scanner(System.in);
         boolean stop = false;
         boolean exist;
         String nom;
         int num, quantite;
         double prix;
+        int i = 0;
 
         do {
             System.out.println("\n\t----- MAIN MENU -----\n");
@@ -30,22 +31,51 @@ public class App {
                     System.out.print("Entrez le numero de l'article : ");
                     num = input.nextInt();
                     for (Article a : stock) {
-                        if (a.getNum() == num) {
+                        try {
+                            ExistTest(a, num);
                             System.out.println(a + "\n");
+                        } catch (NotExistException e) {
+                            e.getMessage();
                         }
                     }
                     break;
                 case 2:
                     System.out.println("\n\t----- INSERTION ------");
                     System.out.println("Entrez les informations de l'element a ajouter :");
-                    System.out.print("Numero : ");
-                    num = input.nextInt();
+                    try {
+                        System.out.print("Numero : ");
+                        num = input.nextInt();
+                        if (num < 0) {
+                            throw new NegativeException("Le numero de cette Article doit etre Positive");
+                        }
+                    } catch (NegativeException e) {
+                        System.out.println(e.getMessage() + "\n Nous avons initialiser le numero automatiquement a : " + 0);
+                        i++;
+                        num = i;
+                    }
                     System.out.print("Nom : ");
                     nom = input.next();
-                    System.out.print("Quantité : ");
-                    quantite = input.nextInt();
-                    System.out.print("Prix : ");
-                    prix = input.nextDouble();
+                    try {
+                        System.out.print("Quantité : ");
+                        quantite = input.nextInt();
+                        if (quantite < 0) {
+                            throw new NegativeException("Le numero de cette Article doit etre Positive");
+                        }
+                    } catch (NegativeException e) {
+                        System.out.println(e.getMessage() + "\n Nous avons initialiser le numero automatiquement a : " + 0);
+                        quantite = 0;
+                    }
+                    try {
+                        System.out.print("Prix : ");
+                        prix = input.nextDouble();
+                        if (prix < 0) {
+                            throw new NegativeException("Le numero de cette Article doit etre Positive");
+                        }
+                    } catch (NegativeException e) {
+                        System.out.println(e.getMessage() + "\n Nous avons initialiser le numero automatiquement a : " + (i+1));
+                        prix = 0;
+                    }
+
                     exist = false;
                     for (Article a : stock) {
                         if (a.getNum() == num) {
@@ -73,7 +103,7 @@ public class App {
                     break;
                 case 4:
                     System.out.println("\n\t----- AFFICHAGE ------");
-                    if (stock.size() == 0) {
+                    if (stock.isEmpty()) {
                         System.out.println("Le stock est vide !\n");
                         break;
                     }
@@ -92,9 +122,12 @@ public class App {
             }
         } while (!stop);
 
-        
-
-
         input.close();
+    }
+
+    public static void ExistTest(Article articles, int X) {
+        if (articles.getNum() != X) {
+            throw new NotExistException("Cette Article n'existe pas");
+        }
     }
 }
