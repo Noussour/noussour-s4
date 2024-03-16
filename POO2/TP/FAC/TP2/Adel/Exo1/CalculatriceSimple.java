@@ -29,6 +29,6 @@ public class CalculatriceSimple {
     // ajouter le panneau dans la fenetre
     fenetre.setContentPane(contenuFenetre);
     // Positionner les dimensions et rend la fenêtre visible
-    fenetre.setSize(400,100);
+    fenetre.setSize(600,250);
     fenetre.setVisible(true);}
 }
