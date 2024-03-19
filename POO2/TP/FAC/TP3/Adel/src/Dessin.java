@@ -1,8 +1,13 @@
 import javax.swing.*;
 import java.awt.*;
 
-public class Dessin {
-    int [][]m = M();
+public class Dessin extends JPanel {
+    int [][]m;
+
+    public Dessin() {
+        this.m = M();
+    }
+
     public void paint(Graphics g)
     {
         new Case(g,m);
