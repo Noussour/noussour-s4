@@ -2,24 +2,23 @@ import java.awt.*;
 
 public class Case {
     private Graphics g;
-    private int[][] m;
 
-    public Case(Graphics g, int[][] m) {
+    public Case(Graphics g) {
         this.g = g;
-        this.m = m;
+        this.draw();
     }
 
-    public Graphics getG() {
-        return g;
-    }
-    public void setG(Graphics g) {
-        this.g = g;
-    }
-
-    public int[][] getM() {
-        return m;
-    }
-    public void setM(int[][] m) {
-        this.m = m;
+    public void draw() {
+        //draw a checker table of 8x8
+        for (int i = 0; i < 8; i++) {
+            for (int j = 0; j < 8; j++) {
+                if ((i + j) % 2 == 0) {
+                    g.setColor(Color.WHITE);
+                } else {
+                    g.setColor(Color.BLACK);
+                }
+                g.fillRect(i * 100, j * 100, 100, 100);
+            }
+        }
     }
 }
