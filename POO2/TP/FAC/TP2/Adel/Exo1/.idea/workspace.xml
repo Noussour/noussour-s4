@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="c0359c00-6565-4dbf-9198-63443e716adc" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/copilot/chatSessions/00000000000.xd" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/copilot/chatSessions/00000000000.xd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/copilot/chatSessions/xd.lck" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/copilot/chatSessions/xd.lck" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/copilot/chatSessions/00000000000.xd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/copilot/chatSessions/blobs/version" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/copilot/chatSessions/xd.lck" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../TP3/Adel/src/Case.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../TP3/Adel/src/Case.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../TP3/Adel/src/Dessin.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../TP3/Adel/src/Dessin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../TP3/Adel/src/Piece.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../TP3/Adel/src/Piece.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../TP3/Adel/src/Table.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../TP3/Adel/src/Table.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,24 +32,28 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;Application.CalculatriceSimple.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/adel_hb/Desktop/Adel/FAC (S4)/NOUSSOUR-S4/POO2/TP/FAC/TP2/Adel/Exo2&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;settings.sync&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "Application.CalculatriceSimple.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/home/adel_hb/Desktop/Adel/FAC (S4)/NOUSSOUR-S4/POO2/TP/FAC/TP2/Adel/Exo2",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "settings.sync",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9f38398b9061-18abd8497189-intellij.indexing.shared.core-IU-241.14494.158" />
-        <option value="bundled-js-predefined-1d06a55b98c1-74d2a5396914-JavaScript-IU-241.14494.158" />
+        <option value="bundled-jdk-9f38398b9061-18abd8497189-intellij.indexing.shared.core-IU-241.14494.240" />
+        <option value="bundled-js-predefined-1d06a55b98c1-74d2a5396914-JavaScript-IU-241.14494.240" />
         <option value="jdk-11.0.21-corretto-11.0.21-9be69aac17ab-05657b60" />
       </set>
     </attachedChunks>
@@ -66,6 +70,8 @@
       <workItem from="1710837672124" duration="62000" />
       <workItem from="1711905367167" duration="78000" />
       <workItem from="1711906216607" duration="3000" />
+      <workItem from="1712545757383" duration="56000" />
+      <workItem from="1712545820622" duration="870000" />
     </task>
     <servers />
   </component>
