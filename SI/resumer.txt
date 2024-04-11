@@ -1,0 +1,51 @@
+# Chapitre1: Entreprise et organisations
+
+   ## systeme : << ensemble d'element materielle ou immateriels organiser pour transformer des entrees en sorties>>
+   ## organisation : <<groupement humain hierarchise qui met en oeuvre des moyens intellectuels, physique et financiers pour extraire, produire, transformer, distribuer ou transporter des richesses.  dont le but n'est pas toujours lucratif>>
+
+   ## entreprise:
+        <<......pour un but definis et en relation avec d'autre entreprises>>
+
+        baigne dons un milieu economique et sociale (envirenement) = evenement susceptible d'affecter l'entrepise
+        1. organisme de controle et regulation/ 2. facteurs de production (Fournisseurs)/ 3. Main D'oeuvre / 4. Debouches(cleients) / 5. Banques (Capitaux)
+        1. systeme de planification de haut niveau qui empechent l'anarchie de s'installer : met en oeuvre une lois de marche et une structrure pour la suivre et la contreoler (exemple ministere des finances)
+
+    ### classification d'entreprise :
+        *Forme juridique : publique/ semi publicque / privee (S.A.R.L)
+        *Selon la taille        Nombre de salaries : Petite(1/5).Moyenne(6/500).Grande(500+)
+                                Chifre d'affaires : CA = volume des ventes / VA (valeur ajoute) = CA - {depences}
+        *Selon le secteur d'activite:
+                                sec primaire : extraction depuis la nature
+                                sec secondaire : transformation
+                                sec teriaire : services: banque, Assurance....
+                                sec quaternaire : Consulting
+
+    ### Fonctions et structure d'entreprise :
+                Fonction: Commerciale, financiere, production , administrative
+
+    ### Organigramme : graphic representant la structure d'entreprise
+    ### Structuration d'entreprise :
+        1.Hierarchie lineare / non lineare
+        2.Division par: service/fonctionnelle.
+        3.avec fonctionnelle d'etats majors
+
+    ### Systemique des organisations : une entreprise est former de 3 sous systeme:
+        SP: Decisions strategique
+        SI: Decisions tactique                                  Systeme de gestion=SI+SP
+        SO: Decisions operationnel
+
+    ### Classification des decisions:
+        ### Par niveau : type de decisions : strategique(DG) 10ans,tactique (Cadres) 5ans,operationnel (personnel) (1ans)
+        ### Par methode : Programmable (routine/ ne font pas appele a la reflexion)
+                         non Programmable (Sttucturee ou non structuree (peut etre decomposer))
+
+    ### SI:
+        envirenement d'un Si===> envirenement intern (SP+SO) + envirenement externe
+        Charger des decisions Programmable et de transmettre des taches du sp aux so ou des message du so aux sp et des messages vers l'exterieur + Collecter/distribuer/traiter/memoriser l'information
+    ### Table Decisions : entree limite/etendue
+
+    ## flux : succession d'evenement (ensemble d'infos vehiculees simultanement entre 2 stations)
+    ## station : point d'utilisation /controle /traitement
+    ## documennt : support d'infos necessaire a la gestion:
+                stationaire: utiliser par une station
+                circulaire : transporte le flux entre station
