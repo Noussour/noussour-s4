@@ -1,0 +1,17 @@
+Chapitre 3: Couche liaison
+
+    .Determine le regroupement des bits.
+    .Traite les erreurs de transmition.
+    .Definis le mode d'acces au reseau
+    .Definis le protocole de comunication
+    .Controle de flux pour reguler le volume de donner(regulariser l'emission des trames sur la capacite du recepteur ) (protocole Send & Wait)/(p.fenetre d'entissipation piggy packing)
+
+    -send & wait: attend la reponse apres chaque envoi
+    -piggy packing: Piplining: l'emeteur n'attend pas apres chaque envoi de trame
+
+1.Adressage : permet d'identifier la machine sur le reseau au niveau de la couche de liaision, Source/Distination
+
+ Norme 802.3 : Ethernet: +populaire en LAN, Concu par XEROX en 70.+100m / 10Mbits/s /extention de topologie etoile
+    Ether = espace de propagation d'ondes
+    Net = Network
+
