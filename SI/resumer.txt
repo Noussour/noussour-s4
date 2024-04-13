@@ -73,19 +73,57 @@
                 *ne doit pas etre ambigue.
                 *doit : etre adapte a l'utilisation desirer/ permet une extensions et des insertions/ concis / mnemoniques
         ### type de codification:
-            sequentielle/ sequentielle pat taches/ articulee/ symbolique(Significative)/ controlable
+          sequentielle/ sequentielle pat taches/ articulee/ symbolique(Significative)/ controlable
+
             *sequentielle: attribuer des nums consecutifs aux objects a codifier d'un meme ensemble :
-                                    +non ambigue, simple, permet des extensions.
+                                    +non ambiguë, simple, permet des extensions.
                                     -ne permet pas d'insertions, non significative necessite des tableaux de correspondance
+            *séquentielle par tranches : Reserver des tranches de codes a des categories d'objects.les tranche seront codifiés de facon séquentielle [0,100(vis)/101,500(écrous)]
+                                    +non ambiguë, simplem, permet des extensions et des insertions.
+                                    -nécessite un tableau de correspondance entre les tranches et les codes.
+            *articulée : le code est divisé en plusieurs zones ayant chacune une signification. 2 types:
+                            a-Juxtaposée: une série de champs les uns à côté des autres : Sexe/A.naissance/Wilaya........
+                            b-hiérarchisée : une arborescence où chaque niveau dépend de son prédécesseur.
+
+                                    +non ambiguë, permet des extensions et des insertions, vaste utilisation(statistiques).
+                                    -nombre important de caractères(non concise), Lourde à manipuler, saturation et instabilité des valeurs
+            *symbolique: abréger la désignation littéraire d´un object en un ensemble de caractères
+                                    +pratique pour l'utilisation manuelle
+                                    -difficile au décodage automatique
+
+        ### Codifiacation Contrôlable: (Associer à chaque valeur de code un clé de contrôrle qui est un chiffre/lettre/nombre)(la clé seras calculée  à chaque utilisation de ce code)(la lettre clé seras définie grâce à un algorithme) (un tableau de correspondance entre nombre et clés associées est fourni au niveau de chaque poste de saisie) (l'algorithme de contrôle lit le code et calcule la lettre clé)
+                                    +détection d'erreurs.
+                                    -difficile à mettre en oeuvre.
+                    (méthode modulo 23) lettre déterminer par sont code ascci aprés modulo 23
+
+        ### Choix d'une codification:
+                        1-Etudier l’utilisation future des codes à définir.
+                        2-Etudier le nombre d’objets à codifier.
+                        3-Rechercher s’il existe des codifications déjà (Par souci de standardisation).
+                        4-Définir la codification avec les personnesqui auront par la suite à l’utiliser.
+                        5-Tester sérieusement la codification définie avant de l’utiliser.
+
+        ### Contrôles :
+            ### Contôles au niveau de : 1.poste de saisie/2.centre informatique(où l'infos est traitées,modifiées,créées)/3.poste de diffusion
+            ### types de contrôles: (automatique/manuelle)(direct/indirect)
+                                *direct : mettent en jeu uniquement l'information contrôlée ou à contrôlée les principaux contrôles directs sont:
+                                        Présence d'info.
+                                        Cadrage d'info:(à droire pour les nums, à guache pour les infos alphabétique)
+                                        Type d'info: numérique/alphabétique....
+                                        de vraisemblance <...<
+                                *indirect : à travers des formules : (année en cours -année de naissance = âge indiqué)
+                                        *contrôle de cohérence interne :(convient à la codification articulée) vérifier une partie d'une information par rapport à d'autres parites de la même infos (février 31 jour)
+                                        *Le contrôle de cohérence externe : Il s'agit de vérifier la conformité d'une information par rapport à d'autres informations externes. (année de bac depuis matriculle universitaire)
+
+           ###Ordre d’exécution des contrôle
+                .Il est à conseiller de réaliser les contrôles directs avant les contrôles indirects.
+                    1. Les contrôles directs sont généralement réalisés dans l’ordre suivant:
+                        a-contrôle de présence, b- contrôle de cadrage, c-contrôle de type, d-contrôle de plage de valeurs.
+                    2. Les contrôles indirects doivent être effectués, si possible, dans un ordre tel qu’un contrôle indirect réalisé sur une information K ne fasse intervenir que des informations I, J,... ayant déjà subi tous les contrôles indirects possibles qui ne font pas intervenir l’information K.
 
 
-
-
-
-
-
-
-
+           a-détection des erreurs
+            b-correction des erreurs
 
 
 
