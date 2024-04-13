@@ -49,3 +49,48 @@
     ## documennt : support d'infos necessaire a la gestion:
                 stationaire: utiliser par une station
                 circulaire : transporte le flux entre station
+
+------------------------------------------------------------------------------------------------------------------
+# Chapitre2: techniques representation d'info
+    ## information : indication/ ressource organisationnelle/ composante reliant tous les element des envirenement intern et externe de l'entreprise
+
+    ## Donnees = signe + Code
+    ## information = Donnes + interpretation
+
+    ### AOV = Attribut / Objet / Valeur
+            Age de retraite est 65; attribut = age legal; object= la retraite ; valeur = 65
+    ### 3 partie d'information:
+        -partie exterieur du message : la realite / la refference
+        -partie intern du message : symboles / signifiant
+        -partie conceptuelle du message : snes / signifie
+
+        accident de voiture = refference
+        signifiant = comment l'accident est d'ecrit par le constat du conducteur
+        signifie = ce que comprend l'Assurance
+
+    ### code " un nom abrégé attribué à un objet"
+        ### qualite d'une codification:
+                *ne doit pas etre ambigue.
+                *doit : etre adapte a l'utilisation desirer/ permet une extensions et des insertions/ concis / mnemoniques
+        ### type de codification:
+            sequentielle/ sequentielle pat taches/ articulee/ symbolique(Significative)/ controlable
+            *sequentielle: attribuer des nums consecutifs aux objects a codifier d'un meme ensemble :
+                                    +non ambigue, simple, permet des extensions.
+                                    -ne permet pas d'insertions, non significative necessite des tableaux de correspondance
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
