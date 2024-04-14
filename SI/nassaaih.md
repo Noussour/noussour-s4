@@ -8,3 +8,5 @@
 
 ## TD2 
 
+1.DCI Global : ne pas representé les signature de document.
+2.DCI : ne pas representé les flux entre statation extern
