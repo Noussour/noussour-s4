@@ -1,17 +1,90 @@
-Chapitre 3: Couche liaison
+# Chapitre 1:
+//////////////////////////////////////////////////////////
+# Chapitre 2:
+//////////////////////////////////////////////////////////
+# Chapitre 3: Couche liaison
 
+                     paquet                    trame
+Couche réseau <-----------> Couche liaison <-------------> couche physique(bits)
+
+    ## Role de la couche de liaison :
     .Determine le regroupement des bits.
     .Traite les erreurs de transmition.
     .Definis le mode d'acces au reseau
     .Definis le protocole de comunication
-    .Controle de flux pour reguler le volume de donner(regulariser l'emission des trames sur la capacite du recepteur ) (protocole Send & Wait)/(p.fenetre d'entissipation piggy packing)
+    .Controle de flux pour reguler le volume de donne(protocole Send & Wait)/(p.fenetre d'entissipation piggy packing)
 
-    -send & wait: attend la reponse apres chaque envoi
-    -piggy packing: Piplining: l'emeteur n'attend pas apres chaque envoi de trame
+    ## Controle de flux : ( pour regulariser l'emission des trames sur la capacite du recepteur)
+      -send & wait: attend la reponse apres chaque envoi (envoiyer les trames un par un et attend une reponse (Acquittement) du recepteur) (ACK(accepted trame))
+      -fenetre d'entissipation (piggy packing): Piplining: l'emeteur n'attend pas apres chaque envoi de trame(peut envoiyer plusieurs trames a la fois),l'Acquittement correspondant est appele piggypacking
 
-1.Adressage : permet d'identifier la machine sur le reseau au niveau de la couche de liaision, Source/Distination
+    ## Adressage : permet d'identifier la machine sur le reseau au niveau de la couche de liaision, permet d'identifier une liaison Source/Distination,(Ethernet,MAC)
 
- Norme 802.3 : Ethernet: +populaire en LAN, Concu par XEROX en 70.+100m / 10Mbits/s /extention de topologie etoile
-    Ether = espace de propagation d'ondes
-    Net = Network
+    ## Norme 802.3 : Ethernet: +populaire en LAN(cheap), Concu par XEROX en 70.+100m / 10Mbits/s sur cable coaxial /extention de topologie etoile /suite au developement du project aloha en consideront la methode CSMA/CD
+        Ether = espace de propagation d'ondes
+        Net = Network
+
+    ### Normalisation des reseau Ethernet : classer selon(type de support, longeur du segment, debit binaire, type de transmition) :-- D TRANS L --
+        *D : debit binaire max du trancon Mbit/s.
+        *Trans : type de transmition : BROAD = Analogique(code analoPSK) / BASE = numerique(code manchester) .
+        *L : Type du support :
+            -{Tx,T4,T,...} : topologie etoile hub paire torsadee.avec longeur segement de 100m max : 100 BASE TX, 10 BROAD T......
+            -{Fx,F,...} : ////////////////////////fibre optique///////////////////////////500m max
+            -V :topologie en bus (int) pour designer max longeur segement cable coaxial en centaine de metre : 100 BASE 10 : 10x100 m
+            -XX : autre codification normalisant le Giga Ethernet (perfomance depasse 1gbits/s) (LH,SX,ZX....)
+
+    ### Type Ethernet (normalisses IEE)
+            1.Standard Ethernet(norme 802.3) 10mbps
+
+                *10 BASE 2 : cable coaxail fin/connecteur BNC en T /connecteur BNC affaiblissent le signal donc possible que 30 station (BNC terminator 50 ohm not grounded+ BNC(connected with female BNC of the MAU of the Ethernet interface of the station(LAN card)) +Cable coaxial +..........+BNC+grounded BNC terminator)
+                *10 BASE 5 : cable coaxial epais(augement distance de couverture)/ remplace BNC par MAU(Transcoptor) et reliant la carte reseau au MAU par un "drop cable"(torsadee/coaxial fin/parallele)(-50m) / (50 ohm terminator + cable cox epais + MAU(relier a la carte reseau de la station par "drop cable"+ cable .....+terminator)
+                *10 Base T : paire torsadee categorie 2 :100 metre
+                *10 BASE T4 : paire torsadee categorie 4 + robuste au erreur (MAU de l'interface reseau de la station est connecter par paire torsadee(twissted pas le meme type) au MAU du HUB) (certain hub contien des port RJ-45 (8pin)(codage manchester) et des port BNC pour connecter les deux reseau)
+                *10 Base F : fibre optique au meme cable type de carte reseau que 10 base 5 (interface reseau na pas de MAU en sortie mais un 15pin AUI( avec un FOMAU (assure la conversion du signal lumineux en signal electriques)
+                *10 BROAD 36 : standard initialise en 85 (IEEE802.3b) jusqu'a 10Mbit/s sur cable coaxial 75ohm de jusqua 3600m.
+                                (comme un 10 base 5 avec cable coaxial different(CATV) et MAU extern remplace par convertisseur (NUM/ANALOGIQUES) (modem) qui permet une plus grande couverture et fiabilite du signal.
+
+
+            2.Fast Ethernet(norme 802.3u) 100mbps
+
+                *100 BASE T4:max 100m segement (HALF DUPLEX seulement)cable de categorie 3/4/5(UTP 3,4,5) (sortie carte reseua 8pin jack MDI)(UTP3) different du 10 BASE que en codage du signal et la categorie des cables
+                *100 BASE TX:max 100m segement(FULL duplex) paire torsadee categorie 5(STP) ou (UTP5) et un hub puissant de 100Mbs /possible avec hub ou switch
+                *100 BASE FX:max 2000m full-Duplex/400m half-duplex (utilise un FOMAU integre dans la carte reseau) qui augement le debit jusqua 100MBS  
+       
+            3.Giga Ethernet(norme 802.3ab) 1Gbs 98
+
+                *1000 BASE-T : paire torsadee de categorie 5 ou + , max 100m,en full-Duplex,utilise obligatoirement des commutateurs(switch)
+                *1000 BASE-CX :-25m,paire torsadee special
+                *1000 BASE-SX : fibre en multimode
+                *1000 Base-LX : fibre en monomode et multimode
+                *1000 Base-LH : fibre sur longues distance
+                *1000 BASE-ZX : fibtre monomode longe distances
+
+            4.10 Gigabits Ethernet(norme 802.3ae) 2002 : pour LAN,MAN et reseau etendus
+                *10G BASE-CX4 : cable infiniband 4x longeur max de 15m par segement
+                *10G BASE-T : cable category 6,6A ou 7,full-Duplex sur 4 paire de longeur max de 100m
+                *10G BASE-SR : fibre multimode,de 26 a 82 metres et support 300m a 2000MHZ 
+                *10G BASE-LR/ER :fibre monomode 10-40km
+                *10G BASE-SW/LW/EW : utilise le WAN PHY pour inter operer les 3 reseau et former un WAN.meme fibre et meme distance
+
+        ## Structrure d'une trame Ethernet :    64o <= taille <=1500o (MTU max transfer unit)
+            1-Amorce(preambule): l'annonce de l'envoi d'une tramme, compose de 7 octet positionnes a 10101010,elle permet de synchroniser les stations resceptrices
+            2-Start Frame Delimiter: delimiteur de debut de trame 10101011
+            3-Adresse destination,Adresse source : MAC Adresses sur 6 octets
+            4-Longueur du champ d'information(length) : (2octets) compris entre 0 et 1500, pour indiquer la longeur des donnees de la trame LLC encapsulee
+            5-Donnees(DATA):champ de la trame LLC (logical Link Control)
+            6-Bourrage(PAD): ajoute si la trame LLC ne contient pas 46o pour satisfaire la taille miniminal d'une trame
+            7-FCS(Frame Control Sequence): un mot de 32bits,pour la verification d'erreur sur la trame ; il se fait a l'aide d'un code polynomial (802.3) :x32 + x26 + x23 +x22 + x16 + x12 + x11 + x10 + x8 + x7 + x5 + x 4 + x2 + 1.
+
+        ## MAC(Medium Access Control) Adresse : chaque carte reseau est distingue par son adresse MAC unique. constitue de 6 octet(48bit) de type X:X:X:X:X:X ou 0<=X<=255 
+
+        ## Sous couche liaison de donnees: 
+                1-LLC (logical link control)mecanismes de controle de flux,gestion des accusee de reception,detecter et coriger les erreurs
+                2-MAC : Reguler les emission sur les support (methodes d'acces) ,cellule dans les trames,addressage
+
+
+
+
+
+
 
