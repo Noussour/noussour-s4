@@ -91,7 +91,7 @@
                                     +pratique pour l'utilisation manuelle
                                     -difficile au décodage automatique
 
-            *Codification Contrôlable: (Associer à chaque valeur de code un clé de contrôrle qui est un chiffre/lettre/nombre)(la clé seras calculée  à chaque utilisation de ce code)(la lettre clé seras définie grâce à un algorithme) (un tableau de correspondance entre nombre et clés associées est fourni au niveau de chaque poste de saisie) (l'algorithme de contrôle lit le code et calcule la lettre clé)
+            *Codification Contrôlable: (Associer à chaque valeur de code un clé de contrôle qui est un chiffre/lettre/nombre)(la clé seras calculée  à chaque utilisation de ce code)(la lettre clé seras définie grâce à un algorithme) (un tableau de correspondance entre nombre et clés associées est fourni au niveau de chaque poste de saisie) (l'algorithme de contrôle lit le code et calcule la lettre clé)
                                     +détection d'erreurs.
                                     -difficile à mettre en oeuvre.
                     (méthode modulo 23) lettre déterminer par sont code ascci aprés modulo 23
