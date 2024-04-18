@@ -130,4 +130,49 @@ Couche réseau <-----------> Couche liaison <-------------> couche physique(bits
 
         3-code polynomiaux :(facile a implementer et bon resultat)(un bloc de n bit est vue comme coef d'un polynome de degree n-1)(l'emeteur et le recepteur doivent se mettre d'accord sur un polynome generateur de degree r=n-k g(x))(Z(x) le polynome d'information utile)
 
-            -codage a l'emission: 1-multiplier Z(x) par x^r (decalage a gauche de r bits)
+            -codage a l'emission:
+                1-multiplier Z(x) par x^r (decalage a gauche de r bits)
+                2- on devise Z(x).x^r par G(x) on obtienr Q(x)G(x)+A(x) : Q(x) polynome quotient/A(x) polynime reste deg<=r-1
+                3-on envoi le polynome Y(x)=Z(x)*x^r+A(x)=Q(x).G(x) qui est devisible par G
+
+            -Decodage a la reception:
+                1- le recepteur calcule Y(x) mod[G(x)]
+                2- si =0 pas d'erreur (suffit d'extraire le message utile) sinon une retransmission seras demander
+
+        4-Circuit logique d'un codeur polynomial (CRC):
+            -la Division est faite a l'aide d'un circiut logique appele diviseur bati,un registre de decalage est present constitue de r bascule D,representant les bits de controle,lie par des operateur de ou exclusif,les coef de Z(x) sont injecter un a un dans le circuit,commencent par le bit de poids fort.
+
+
+        ## propriete des codes polynomiaux : soit y(x) le code envoyer et y'(x) le code recu y'(x)+E(x)
+            1-tout erreur simple est detecter si deg(G(x))>1
+            2- les erreur double sont tout detecter si G(x) ne devise pas x^i+1 ou i appartient a {r,n-1} n etant la taille du code
+            3- le message a un nombre impaire d'erreur est toujours detecter si G(x) devisible par (x+1)
+            4- un code polynomial detecte toutes les salves (burst) (suite erreurs) de longeur inferieur ou egale a r
+            *pour coriger on utilise des polynoms avec des propriete particuliaire comme (BCH) (Reed solomon)
+
+
+        ## Controle d'acces multiple :
+        -une methode d'asses definit la politique d'acces aux supports du reseau l'orsque plusieurs machines veulent communiquer en meme temps,cette politique est implementer dans la carte reseau au niveau de la sous Couche MAC
+        -il existe plusieurs technique normalisees:
+                *Centralisees ou distribuiees : une station primaire designee est chargee de regler les conflits d'access,ou le controle est distribuee entre toutes les stations
+                *Statique ou dynamiques
+                *Deterministe ou probabilistes (Random) : garantie au bout d'un temps l'access au support ou non(Random)
+                *Equitables ou no : vis-a-vis des possibilites d'acces des stations
+                *Avec ou sans contentions : existence de collisions de trames
+
+            -technique Statique:(Multiplexage FDMA, TDMA synchrone) : (bande passante repartie definitivement entre stations ) (perte de temps lors d'inactivite de station)(Mal adaptee aux reseaux locaux ou la cnx et dcx de station est frequent)
+              .TDMA(time division Multiple access) acces multiple a repartition dans le temps ----|----
+              .FDMA acces multiple a repartition en frequence ====
+
+            -Technique probabuilistes :
+                *ALOHA : (attendre acquittement au max pendant une duree egale a 2 fois le temps de propagation)(si paquet et erroner ou colliser on retransmit)(au bout de n retransmission l'emetteur abandonne) (la retransmission se fait selon un algorithme de reprrise)(a la reception si le message est errone aucune reponse n'est transmise)
+                *ALOHA Tranches (Slotted) : (le temps de coupe en tranche appele slot)(stations synchroniser)(la station transimis au debut du slot)
+                *Techniques Carrier Sense Multiple Access(CSMA) : (ecouter le canal avant emission)(si le communicateur detect un singal il differe son emission a un moment ulterieur)(ils peut toujours avoir de collisions)(utilise par ethernet sous 802.3)(re-emission en temps aleatoire)(efficace)(detect les collision)(reprise apres collision pour l'eviter)
+                        Algorithe : 1-ecouter le cable est attendre fin de toute transmmission.2-transmettre et ecouter pour detecter les collision.3-si collision stop et attendre [0..N] pour retranmetre.3-si 2eme fois attendre [0..2N] ..........whiyarayha
+
+        ## Commutation:(permet aux equipements de communiquer a travers un reseau de type maillee)
+            ### Par circuit :(base de mobile com)(etablie un circuit virtuel prive entre machines pour la duree de communication)(sans attente(pas de delai de noeuds))(gestion inificace des ressources et couts elevee de maintenance et memorisation des chemin empruntes)(3etaps etablissement du circiut (appel)/transfert/fermeture du circuit (raccrochage)
+
+            ### Par Paquets :(fragmentation du message par paquets)(chaque packets independament acheminee)(taille reduite donc stockage en RAM)(Principe STOCK & FORWARD: apres chaque reception du message en noeud il est memoriser et verifie contre erreurs)
+
+            com circuit vs com paquets :(circuit dedie)(circuit partager)/(bande passante)(paquets (message deviser))/(support enifficace)(efficace)/(chemin unique)(+chemin)
