@@ -79,12 +79,55 @@ Couche réseau <-----------> Couche liaison <-------------> couche physique(bits
         ## MAC(Medium Access Control) Adresse : chaque carte reseau est distingue par son adresse MAC unique. constitue de 6 octet(48bit) de type X:X:X:X:X:X ou 0<=X<=255 
 
         ## Sous couche liaison de donnees: 
-                1-LLC (logical link control)mecanismes de controle de flux,gestion des accusee de reception,detecter et coriger les erreurs
-                2-MAC : Reguler les emission sur les support (methodes d'acces) ,cellule dans les trames,addressage
+                1-LLC (logical link control)mecanismes de controle de flux,gestion des accusee de reception,detecter et coriger les erreurs (IEEE 802.2)
+                2-MAC : Reguler les emission sur les support (methodes d'acces) ,cellule dans les trames,addressage(IEEE 802.3)
+
+        ## Controle des erreurs : Chaque suite de bits sera augmenter par une autre de redendence ou de controle
+            C(n,k) code :n=taille du code(le mot de code).k=taille d'info utile ;n=k+r .r=bits ajouter de controle
+            le mot de code qui n'appartient pas a C(ensemble de sequence de mot distincts) est dit invalid
+            un code contient 2^k de mot valide
 
 
+            1.Detection/retransmission : ajouter des redendence pour que le recepteur detect les erreur
+            2.Correction : ajouter des redendence pour correction
+
+            Efficacite d'un code : (++quand les mots du code sont distincts)(++ Ec proche de 1 + code est performant)(elle depend de distance minimal de hamming entre different mot du code)
+                        EC=nbmessagereconnusfaux/nbmessagefaux
+
+            E:Vecteur d'erreur de bloc : ( E = X xor X')(X bloc emis ,X' bloc recu)(E=0 pas d'erreur)
+
+            Distance de hamming:DH(M,M') le nombre de bits different dant 2 mot (nmbre de 1 dans E)
+                .peut detecter DH(C)-1 erreur
+                .peut corriger (DH(C)-1)/2
 
 
+            Distance minimale de hamming :Dhmin : minimum des distance entre 2 code d'un code C
+                Dhmin permet d'evoluer le pouvoir d'un code,(il faut Dhmin erreur pour transformer un mot)
 
+           Code de hamming: technique de detection d'erreur simple (un bit) par ajout de bits de controle de parite(chaque bit de controle represente la parite d'un sous ensemble de bits de l'infos utile)
+                *A l'emission:
+                -Calcule nb de bits de controle
 
+                    plus petit nb r verifiant 2^r>=n+r+1 (nb bit utile)
 
+                -Determiner la position de bits de controle
+
+                    seront placer au position 2^i (de gauche a droite)(les position commencent par 1)
+
+                -Calculer les valeur des bits de controle
+                    -prendre la position du bit de controle(2^i)/ sa valeur sera le xor de tous les bits de l'information utile occupent la position j ou j contient 2^i(j=....+2^i+.....)
+                *A la reception: (Detection)(si les btis de controle recu identiquer au bit calculer donc pas d'erreur)(la position du bit errone est la somme de position des bit de controle errones (il suffit juste de l'inverser pour corriger l'infos))
+                -Extraire les bits d'info utile
+                -Recalculer les bits de controle
+                -comparer ce recu
+
+        ###Methode basee sur la parite:
+                l'infos transimise et decoupee en blocs de k bits puis r bits de redendence serons ajouter par differente methods de calcule (kima li lfo9)
+        1-Methode basee sur la paritee transversale (ou vertical) VRC :vertical redundancy checking
+                l'infos est sectionnee en blocs de k bits pous ajouter un bits de parite (r=1) de telle sorte que la somme des k+1 bits soit paire (parite paire) ou impaire(parite impaire)(le bit est ajoute a droite)(elle permet de detecter les erreur pour chaque charactere transmis)
+
+        2-Parite LRC(parite longitudiale longitudinal redundancy Checking)/VRC: les caracter munis de leur bit de parite transversale seront regrouper par blocs, on ajoute un caracter de parte longitudial a la fin de chaque bloc(la correction sera possible en inversant le bit a l'interssection d'un ligne et colone ayant une parite incorrect)(impossible de corriger les erreurs double)
+
+        3-code polynomiaux :(facile a implementer et bon resultat)(un bloc de n bit est vue comme coef d'un polynome de degree n-1)(l'emeteur et le recepteur doivent se mettre d'accord sur un polynome generateur de degree r=n-k g(x))(Z(x) le polynome d'information utile)
+
+            -codage a l'emission: 1-multiplier Z(x) par x^r (decalage a gauche de r bits)
