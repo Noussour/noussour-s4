@@ -1,0 +1,28 @@
+QUESTION DE COURS :
+
+------------------------------------ TEST1 --------------------------------------
+  Exo2 :
+    a. Controle de flux : Régulariser l'émission des trames sur la capacitée du canal
+      Conttole et gestion : -controle d'erreur de Transmission
+                          -controle de flux
+                          -gestion de la liaison
+
+    b. Detection par duplication : 
+      -Dupliquer les trames
+      -Envoyer les trames
+      -Attendre la reception
+      -Si la trame est reçu, on envoie un accusé de reception
+      -Si la trame n'est pas reçu, on renvoie la trame
+      --> Dans le cas ou le message et sa copie subissent la meme erreur de transmission, le recepteur ne pourra pas savoir si la trame est correcte ou non
+
+    c. Le controle de parite simple permet de detecter que les erreur simple
+      -Si le nombre de 1 est impair, on ajoute un 1
+      -Si le nombre de 1 est pair, on ajoute un 0
+      --> Il ne permet pas de corriger les erreurs d'order pair car la parite est la meme
+
+------------------------------- Examen 2015-2016 --------------------------------
+Exo1 :
+  3. Services de la couche liaison de données :
+      - Services sans connexion sans acquittement
+      - Services sans connexion avec acquittement
+      - Services orientés connexion
