@@ -67,7 +67,7 @@ Couche réseau <-----------> Couche liaison <-------------> couche physique(bits
                 *10G BASE-LR/ER :fibre monomode 10-40km
                 *10G BASE-SW/LW/EW : utilise le WAN PHY pour inter operer les 3 reseau et former un WAN.meme fibre et meme distance
 
-        ## Structrure d'une trame Ethernet :    64o <= taille <=1500o (MTU max transfer unit)
+        ## Structrure d'une trame Ethernet :    64o <= taille <=1518o (MTU max transfer unit)
             1-Amorce(preambule): l'annonce de l'envoi d'une tramme, compose de 7 octet positionnes a 10101010,elle permet de synchroniser les stations resceptrices
             2-Start Frame Delimiter: delimiteur de debut de trame 10101011
             3-Adresse destination,Adresse source : MAC Adresses sur 6 octets
@@ -96,8 +96,8 @@ Couche réseau <-----------> Couche liaison <-------------> couche physique(bits
 
             E:Vecteur d'erreur de bloc : ( E = X xor X')(X bloc emis ,X' bloc recu)(E=0 pas d'erreur)
 
-            Distance de hamming:DH(M,M') le nombre de bits different dant 2 mot (nmbre de 1 dans E)
-                .peut detecter DH(C)-1 erreur
+            Distance de hamming:DH(M,M') le nombre de bits different dans 2 mot (nombre de 1 dans E)
+                .peut detecter DH(C)-1 erreur	(DH(C) == Distance de Code)
                 .peut corriger (DH(C)-1)/2
 
 
@@ -148,7 +148,7 @@ Couche réseau <-----------> Couche liaison <-------------> couche physique(bits
             2- les erreur double sont tout detecter si G(x) ne devise pas x^i+1 ou i appartient a {r,n-1} n etant la taille du code
             3- le message a un nombre impaire d'erreur est toujours detecter si G(x) devisible par (x+1)
             4- un code polynomial detecte toutes les salves (burst) (suite erreurs) de longeur inferieur ou egale a r
-            *pour coriger on utilise des polynoms avec des propriete particuliaire comme (BCH) (Reed solomon)
+            *pour coriger on utilise des polynomes avec des propriete particuliaire comme (BCH) (Reed solomon)
 
 
         ## Controle d'acces multiple :
