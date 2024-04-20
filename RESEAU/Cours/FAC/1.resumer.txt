@@ -1,0 +1,42 @@
+Chapitre 1: intro aux reseaux
+
+ un reseaux est un ensemble d'equipements relies entre eux pour echanger des infos sous forme de donnees numeriques
+ le choix du support physique (coaxial,torsade,fibre) est influecee par (le cout,le debit attendue,la bande passante necessaire,le taux d'erreur,la distance max,la possibilite de voies de secours)
+
+ # ETTD(equipements terminaux de traitement de donnees) : (elements terminaux :clavier)(station de travail:pc)(ordi centraux:serveur)
+ # ETCD(equipements terminaux de circuit de donnees) : relie les ETTD entre eux on trouve deux type: (Carte ou interface reseaux (gestion de ligne de transmission par le CPU))(Modem qui convertise l'info binaires en analogique et vice versa)
+ # Equipements d'inter CNX: (assure la cnx aux terminaux)
+                    *Multiplexeurs : partage statique dess ligne
+                    *Concentrateurs : partage dynamique des ligne(hub)
+                    *Commutateurs : fait commuter les donnees(switch)
+                    *Routeur : dont le routage de donnees
+                    *les passerelles ......
+
+# Classification de reseaux :
+            a-par Taille :(distance couvert par le reseaux): BUS,PAN,LAN(<1km,10Mbs-1gbs),MAN(10km,100mb/s),WAN(100km ,mbs)
+            b-selon le type : client-serveur,poste a poste (peer to peer)
+            c-par topologie : *bus(tout les noeud cnc a un cable central debuter par des terminateurs)(backbone)
+                              *anneau (les ordis forment une boucle (Token ring))(de nos jour ils ne sont pas relie en boucle mais a un repartiteur MAU: Multistation Access Unit qui gere la comm en attribuont un temps de parole a chaque station)
+                              *etoile (liason concentree)(tout les station son relier a un hub ou Concentrateur)
+            d-selon support de transmission :(fillaire/non fillaire(1-intercnx de systeme(bluetooth)2-Lan sans fil(wifi)3-Wan sans fil(WIMAX)))
+                                            -mobile (mobilite du reseaux):
+                                                1-cellulaire : reparti sur des zones terrestres appelees cellule (mecanisme du handover ou plusieurs station fix couvre un large rayon)
+                                                2-ad-hoc : sans l'aide des points d'access(les stations fix)(premier secours)
+                                                3-capteur sans fils :(WSN Wireless sensor network) : type special de ad-hoc (un grand nombre de micro capteur)(les donnees sans cheminer en multi saut jusqu'a le point de collect "SINK" puits)
+
+## OSI :(DEFINIE DES REGLE COMMUNES)(structure en couche)(Pls Do Not Throw Sausage Pizza Away)
+        ### Couche basse(transmission des donnees,service de transport):
+                    1-couche physique :transmission des bits sur le circuit(ouverture de session,definition de la procedure utiliser)
+                    2-couche liaison : rend la transmission fiable(synchronisation,controle de flux et d'erreur)
+                    3-couche reseau : responsable du transfers a travers le reseau (adressage et routage)
+                    4-couche tranport : responsable du transfe de bout-en-bout avec fiabilite et efficacite (correspondance des address,reprise des erreur,optimisation,control de flux bout en bout)
+        ### Couche haute(traitement sur les couches transportee,service d'access):
+                    5-couche session : mecanisme de gestion d'une session(organisation et synchronisation de dialogue)(etablissement et liberation d'une session)
+                    6-couche presentation :prepare l'infos pour affichage a l'utilisateur :(codage/decodage)(compresseion/decomp)(Cryptage)
+                    7-couche application : fournis des service pour acceder a l'environnement OSI
+
+## TCP/IP : 4 couches
+        1-couche acces reseau : interfere avec le reseau constitue de driver Os et carte reseau
+        2-couche internet : gere la circulation des paquets assurant leur routage
+        3-couche transport : assure la communication fiable
+        4-couche application : pour programme utilisateur tel FTP,SMTP....
