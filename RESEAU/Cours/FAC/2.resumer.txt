@@ -1,0 +1,60 @@
+Chapitre 2 : Couche physique : (tranmission d'infos sur un canal de tranmission)
+
+## transmission numerique (variation en une seul grandeur physique) (Etcd = codeur de bande de base)
+
+        1- tout ou rien (unipolaire): 1 = 5v , 0 = 0v (consomme l'electricite,prblm detection et desynchronisation)
+        2- bipolaire : 1=5v ou -5v (alternativement) 0=0v
+        3- NRZ (no return to zero) : 1=+ 0=-
+        4- RZ (return to zero) : 1= front descendent au milieu ,0 =0
+        5- biphase(Manchester) : 1= front descendent au milieu , 0 = front montant au milieur (+synchronisation tjr assure)(debit deux fois plus elevee)
+        6-biphase differentiel (Manchester differentiel) : 1= front montant ou descendant au mileu , 0 = front descendant ou montant au debut
+
+
+
+## transmission analogique (variation en plusieurs grandeur(onde)) y=A Sin (2pi f t +phi)  : A=amplitude/ f=frequence=1/p(hz);p=la phase(s)/ phi= phase (rad)
+
+## bruit(perturbations de la forme du signal)
+                    -(bruit blanc :perturbation uniforme rajoutant au signal une petite amplitude de moyenne global nulle (genere par les connecteurs et ampliphicateur et equipements))
+                    -buit aleatoire(impulsif) (pics d'intensite provoquant des erreurs de tranmission et induit par source electromagnitique)
+
+## Affaiblissement : A =10 log{10}(S/B)(db) :S/B = rapport signal sur bruit =SignTrans/Singrecu (pas d'unite)(la perte de singal en energie)(proportionnel a la distance et la frequence)
+
+## distortion de phase : (depassage de signal entree selui en sortie grace a la non synchronisation )
+
+## Taux d'erreurs = nbbitserrone / nbbitemis
+## etat = plus petit unite transmise / t: duree de l'etat(constante) / n : nombre de btis representent un etat / V=2*n (valence=nb etat generable)
+
+## Rapidite ou Vitesse de modulation : R=1/t (bauds) (nb etat par second)
+## Debit binaire d'une voie : D=n.R (nb bits transmis par second)(n=nb bit par etat)
+## temps de transfert : Tt =Te+Tp : Te : (emission) = Taille message / Debit binaire (temps d'injection du message par l'Etcd)
+                                    Tp : (propagation) = distance / vp (Vitesse de propagation)
+
+## Bande passante d'une voie de transmis (bandwidth): W =f2-f1 (intervalle de frequence ou le signal subit -50% d'Affaiblissement)
+
+## Capacite d'une voie de transmis (shnon) (quantite de bits pouvant se tranmetre sur une voie)
+                    C = W log{2} (1+S/B) (bps)
+## intensite trafic (utilisation de la voie par heure) :
+                        E = T.Nc/3600 (erlangs)  T: duree moyenne d'une session(s), Nc : nb session moyen par heure
+
+## support guidee : Bande passante : fibre > coaxial > torsad(robuste)
+                    Porte : fibre >coaxial > torsad
+                    Prix : fibre > coaxial > torsad
+    (non guidee = sans fil) WPAN - WLAN - WMAN - WWAN
+
+## Modem (Etcd pour la transmition analogique) : 1-modulation d'amplitude ,2-modulation de frequence ,3-modulation de phase
+        (la modulation augement la valence par suite le debtit)
+
+
+
+## numerisation : (transfers ananlogique en numerique) (3 etape)
+                    1-echantillonage (fe >2*W) pour un singal de bande W=5hz il faut echantiller 10hz fois par second
+                    2-Quantification (approximation de chaque echantillon)
+                    3-Codage affecter val numerique a chaque echantillon
+## alocation static(allouer a chaque station une voie)(multiplexeur) dynamique (duree variable d'allocation)(concentrateur)
+## multiplexage (partage du canal) voie haute (fort debit HV)(deviser en voie bas basse BV)
+        ### FDM (frequency division multiplexing) : partage la bande de frequence (seul tranmis analogique)(telephone)
+                sum{Bpi} < BP ; Bpi=bande passante de voie basse ; BP =bande passante voie haute
+                C >=  sum {Di} ; C capacite de la HV ; Di debit de BV
+                Rmux >= sum{Ri} ; rapidite
+
+                *niveau FDM
