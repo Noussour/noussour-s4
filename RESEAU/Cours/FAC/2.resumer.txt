@@ -57,4 +57,10 @@ Chapitre 2 : Couche physique : (tranmission d'infos sur un canal de tranmission)
                 C >=  sum {Di} ; C capacite de la HV ; Di debit de BV
                 Rmux >= sum{Ri} ; rapidite
 
-                *niveau FDM
+                *niveau FDM : 12}groupe 5} supergroupe 10} master group 6}Jumbo group
+
+        ### TDM (time devided multiplexing)(totalite de la HV en quantum)(moderne et adaptee au numerique)
+                *TDM Synchrone : mux statique; Ts (periode de scrutation) = nb voie .quantum ; nb voie = BP/bpi
+                *TDM Asynchrone : mux dynamique
+
+## Concentrateur : recois en plusieurs ligne et partage sur un seule (inversee de la diffusion)(hub=mux async temporel)
