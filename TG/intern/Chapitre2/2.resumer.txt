@@ -1,1 +1,90 @@
- 
+Chapitre 2 : Cheminement dans les graphes
+## Chaine :
+        Suite alternee des sommets et d'aretes(d'arcs) u=8l4i3e2 : chaine joignant le sommet 8 et 2 de longeur nb(sommet -1) ou nb(arc) (dans un graphe orientee on ne considere pas le sens des arcs)
+
+## Chemin : (graphe orientee) (x{i-1}(extremite initial de l'arc u{i})(x{i} extremite terminal de u{i}))
+
+## Chaine/Chemin Simple : tous les arcs sont distincts
+## Chaine/Chemin elementaire : tous les sommets sont distincts (tous chemin elementaire est simple)
+
+
+## longeur d'une chaine(chemin) simple = nb arrete qui le forme
+## x a y : il existe un chemin de x vers y
+## dans un graphe simple une chaine(chemin) peur etre determiner juste par la suite de ses sommets (meme chose pour un 1-graphe)
+## ferme : chemin ou chaine ou les extremite sont confondues
+
+## Cycle : chaine fermee simple
+## Circuit (orientee): chemin fermee simple
+## elementaire : sommets ne se repete pas : on ne considere pas la fermeture
+## un cycle (circuit) elementaire est une chaine (chemin) non elementaire
+
+## une boucle est un cycle(circiut) elementaire de longeur 1 , tout cycle est une chaine tout circiuit est un chemin et tout chemin est une chaine
+## de tout cycle (circuit) en peut extraire un cycle (circuit) elementaire (suprrimer les cycle intermediaire)
+## de tout cycle (circuit) passant par e en peut extraire un cycle (circuit) elementaire passant par e ; (suprrimer les cycle qui ne passent pas par e)
+
+## Existence d'un cycle : si G verifie S(G) >=k >=2 alors G contient un cycle ; de plus si G est simple il admet un cycle elementaire de longeur >= k+1 et une chaine elementaire de longeur >=k,
+    .Si nombre d'arc>=nombre des sommet ; alors G admet un cycle
+
+## Existance d'un circuit : si G verifie (S+(G)>=k>=1)et (S-(G)>=k>=1) : de plus si G est simple alors il admet un circuit elementaire de longeur >= k+1 et un chemin elementaire de longeur >=k,
+
+## Matrice de fermetture transitive M^ :
+    .G=(X,U) un 1-Graphe orientee d'ordtre n ; on peut calculer ca matrice de fermeture transitive a partir de sa matrice d'adjacence M (booleenne)
+    .chaque element : m^{i,j} = {1 si exist i a j ,sinon 0}
+    . la matrice M[l] represente tous les chemins dans G de longueur l. M[l+1] = M[l].M
+    .Algorithme de Warshall : O(n^3) : permet d'eviter le trop d'operation matricielles ; pour tous ligne de la matrice et pour tous colone si en trouve une cellule a 1 , on fix ca colone et en la concat avec tous les autre colone ou l'index de la [ligne,conlone] est mis a 1
+
+## Exploration (Parcours)d'un graphe : (elle permet d'etudier les proprite d'un graphe{biparti,connexite...} a travers les visite des sommets via els arretes ou les arcs)
+    .Algorithme d'Exploration : 1-determine l'ordre de visite des graphes.2-parcours commencant par la racine r.3-result en une liste ou r est au premier et les autre arrete apparaissent q'une seul fois.
+    .Exploration en largeur: pacourir tous les voisin a un niveau est insi de suite : FIFO
+    .Exploration en profondeur : debuter par la racine et tracer une chaine,et changer l'extremite de la chaine a chaque fois : LIFO
+
+## Connexite :
+    .un graphe est connexe s'il existe une chaine joignant chaque paire de sommet x et y (x!=y) : en le voie comme une seul entite
+
+## Composante Connexe (CC) : .un graphe connexe contient une seul Composante connexe
+                             .les sous Graphe engendre par un sommet isole est considere comme une composante connexe de G
+                             .Si S un sous graphe est connexe et tout sous graphe engendre par S U{x} x nappartient pas a S n'est pas connexe alors le graphe Gs est commposante connexe de G
+
+## Forte Connexite (orientee) : s'il exist pour chaque (x!=y) un xay et yax
+## Composante Fortement Connexe (CFC) : .le sous graphe engendre par un sommet tell que dg(x)=0 forme une composante fortement connexe
+                                        .Si S un sous graphe est fortement connexe et tout sous graphe engendre par S U{x} x nappartient pas a S n'est pas connexe alors le graphe Gs est une commposante fortement connexe de G
+## Algorithme de calcul des CFC a :
+                    :a partir de la matrice de fermeture transitive Les CFC sont : les sommet ayant la diagonal a 0 ; les sommets avec des ligne identique ; les sommets avec des colones identiques
+
+## Ascendants / Descendants : pour chaque sommet en definie 2 ensembles :
+                    -ensembles des Descendants de x :
+                    D(x)={y / xay}
+                    -ensembles des Ascendants de x :
+                    A(x) ={y/yax}
+
+## Graphe reduit Gr(Xr,Ur) (orientee) :  Xr : { chaque CFC de G correspond un sommet Ci} Ur : {(Ci,Cj)/i!=j et exist x appartenant a Ci et y appartenant a Cj et (x,u) appartient a U} ; le graphe reduit ne possede pas de circuits
+
+## Parcours Euleriens : (passe seulement une fois par l'arrete(arc)) : si le graphe contient m arrete alors le (chemin simple /chaine simple/ cycle ou circuit de longeur m) est dit eulerien :
+## Theoreme d'euler :
+        -un multigraphe G (non simple) admet une chaine Eulerienne si : -il est connexe et nombre de sommet de degree impaire et 0 ou 2
+
+        .Un Graphe G admet une chaine Eulerienne d'un sommet  x a y si seulement si dg(x) et dg(y) impaire et pour tout z de G (dg(z) est paire
+        .G admet un Cycle eulerien si tout les sommet de G ,on a dG(x) est pair
+
+## Determination d'une chaine Eulerienne : 1-choisir un sommet de degre impair (si pas de sommet impaire choisir n'import quel sommet)
+
+
+## Circuit Eulerien : si seulement : -pour tout sommet dg+(x)=dg-(x) on dit que G est pseudo symetrique
+-G admet un cycle Eulerien donc G est eulerien
+-G admet une chaine eulerien mais pas de cycle donc G est semi eulerien
+
+## Parcours Hamiltonien : passe seulement une fois par chaque sommet du graphe,peut etre une chaine,chemin,cycle circuti
+        -G d'ordre n,une chaine (chemin) elementaire de longeur n-1 est appele un chaine Hamiltonienne (chemin Hamiltonien)
+        -Un cycle (resp. circuit) élémentaire de longueur n est appelé cycle (resp. circuit)Hamiltonien.
+
+Un graphe qui contient un cycle Hamiltonien est un graphe Hamiltonien.
+• Un graphe semi-Hamiltonien : contient une chaîne Hamiltonienne, mais pas de cycle Hamiltonien.
+• Le plus petit graphe Hamiltonien d'ordre n est le graphe cycle (Graphe connexe non-orienté à n arêtes. Il est 2-régulier)
+. graphe complet d'ordre n>=3 est Hamiltonien
+.tout graphe tournoi (oriente simple et complet) d'ordre n, note Tn contient un chemin hamiltonien
+.tout tournoi d'ordre n fortement connexe contient un circuit hamiltonien
+
+
+## Theoreme Graphe Hamiltonien : (utiliser pour montrer qu'un graphe n'est pas haminltonien(cycle hamiltonien))
+            -si G=(X,E) est un graphe hamiltonien alors pour tout ensembles de sommets S inclue X on a : -p(Gx-s) <=|S|
+            -où p(GX-S) est le nombre de composantes connexes du sous graphe de G induit par l’ensemble X-S
