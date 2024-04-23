@@ -1,10 +1,15 @@
 import java.awt.*;
 import javax.swing.*;
 
-public class CalculatriceComplexe {
-  public static void main(String[] args) {
-    // Crée la fenetre
-    JFrame fenetre = new JFrame("Calculatrice");
+public class Vue extends JFrame {
+  public Model model;
+  public Controler controler;
+
+  // Affichage de la fenetre
+
+  Vue(Model model, Controler controler) {
+    this.model = model;
+    this.controler = controler;
     // Créer un panneau
     JPanel contenuFenetre = new JPanel();
     // Affecter un gestionnaire de disposition à ce panneau
@@ -25,32 +30,41 @@ public class CalculatriceComplexe {
 
     // Créer un panneau pour les boutons
     JPanel panel1 = new JPanel();
-    GridLayout layout1 = new GridLayout(4, 3);
+    GridLayout layout1 = new GridLayout(4, 4);
     panel1.setLayout(layout1);
     JButton button0 = new JButton("1");
     JButton button1 = new JButton("2");
     JButton button2 = new JButton("3");
+    JButton button12 = new JButton("+");
     JButton button3 = new JButton("4");
     JButton button4 = new JButton("5");
     JButton button5 = new JButton("6");
+    JButton button13 = new JButton("-");
     JButton button6 = new JButton("7");
     JButton button7 = new JButton("8");
     JButton button8 = new JButton("9");
-    JButton button9 = new JButton("0");
-    JButton button10 = new JButton(",");
     JButton button11 = new JButton("=");
+    JButton button9 = new JButton("0");
+    JButton button10 = new JButton("*");
+    JButton button14 = new JButton("/");
+    JButton button15 = new JButton("");
+
     panel1.add(button0);
     panel1.add(button1);
     panel1.add(button2);
+    panel1.add(button12);
     panel1.add(button3);
     panel1.add(button4);
     panel1.add(button5);
+    panel1.add(button13);
     panel1.add(button6);
     panel1.add(button7);
     panel1.add(button8);
+    panel1.add(button11);
     panel1.add(button9);
     panel1.add(button10);
-    panel1.add(button11);
+    panel1.add(button14);
+    panel1.add(button15);
     contenuFenetre.add("Center", panel1);
 
     //        JPanel panel2 = new JPanel();
@@ -69,10 +83,31 @@ public class CalculatriceComplexe {
     //        contenuFenetre.add("West", panel2);
 
     // ajouter le panneau dans la fenetre
-    fenetre.setContentPane(contenuFenetre);
+    this.setContentPane(contenuFenetre);
     // Positionner les dimensions et rend la fenêtre visible
-    fenetre.setSize(600, 300);
-    fenetre.setVisible(true);
-    fenetre.setResizable(false);
+    this.setSize(600, 300);
+    this.setVisible(true);
+    this.setResizable(false);
+  }
+
+  // important functions :
+  public void ajouteSaisie(String s) {
+    // ajoute un chiffre à la saisie
+  }
+
+  public void afficheTotal() {
+    // affiche le total
+  }
+
+  public boolean entreeValid() {
+    return false;
+  }
+
+  public void erreur(String s) {
+    // affiche une erreur en utilisant JOptionPane
+  }
+
+  public int getEntree() {
+    return 0;
   }
 }
