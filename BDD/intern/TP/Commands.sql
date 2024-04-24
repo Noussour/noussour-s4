@@ -413,6 +413,159 @@ HAVING
 ORDER BY
   COUNT(*);
 
+SELECT id, make, model, price, ROUND(price*.10,1) FROM car;
+
+SELECT id, make, model, price, ROUND(price*.10,1) AS round FROM car;
+
+SELECT id, make, model, price, ROUND(price*.10,1) AS ten_percent FROM car;
+
+SELECT
+  COALESCE(1);
+
+SELECT
+  COALESCE(NULL, 1);
+
+SELECT
+  COALESCE(2, 5);
+
+SELECT
+  COALESCE(email)
+FROM
+  person2;
+
+SELECT
+  COALESCE(email, 'NOT PROVIDED')
+FROM
+  person2;
+
+SELECT
+  first_name,
+  last_name,
+  date_of_birth,
+  AGE (NOW ().date_of_birth)
+FROM
+  person2;
+
+SELECT
+  first_name,
+  last_name,
+  date_of_birth,
+  AGE (NOW (), date_of_birth)
+FROM
+  person2;
+
+SELECT
+  first_name,
+  last_name,
+  date_of_birth,
+  AGE (NOW (), date_of_birth) AS age
+FROM
+  person2;
+
+INSERT INTO
+  person2 (
+    id,
+    first_name,
+    last_name,
+    email,
+    gender,
+    date_of_birth,
+    country_of_birth
+  )
+VALUES
+  (
+    1,
+    'HADJ ARAB',
+    'Adel',
+    'hadjarabadel.2411@gmail.com',
+    'Male',
+    '2022-11-24',
+    'Algeria'
+  );
+
+INSERT INTO
+  person2 (
+    first_name,
+    last_name,
+    email,
+    gender,
+    date_of_birth,
+    country_of_birth
+  )
+VALUES
+  (
+    'HADJ ARAB',
+    'Adel',
+    'hadjarabadel.2411@gmail.com',
+    'Male',
+    '2022-11-24',
+    'Algeria'
+  );
+
+SELECT
+  *
+FROM
+  person2
+WHERE
+  country_of_birth = 'Algeria';
+
+ALTER TABLE person2
+DROP CONSTRAINT person2_pkey;
+
+INSERT INTO
+  person2 (
+    id,
+    first_name,
+    last_name,
+    email,
+    gender,
+    date_of_birth,
+    country_of_birth
+  )
+VALUES
+  (
+    1,
+    'HADJ ARAB',
+    'Adel',
+    'hadjarabadel.2411@gmail.com',
+    'Male',
+    '2022-11-24',
+    'Algeria'
+  );
+
+SELECT
+  *
+FROM
+  person2
+WHERE
+  id = 1;
+
+ALTER TABLE person2 ADD PRIMARY KEY (id);
+
+DELETE FROM person2
+WHERE
+  id = 1
+  AND first_name = 'HADJ ARAB';
+
+ALTER TABLE person2 ADD PRIMARY KEY (id);
+
+DELETE FROM person2
+WHERE
+  country_of_birth = 'Russia';
+
+UPDATE person2
+SET
+  email = 'update@gmail.com'
+WHERE
+  id = 197;
+
+SELECT
+  *
+FROM
+  person2
+WHERE
+  id = 197;
+
 -------------------------- CREATE car TABLE ----------------------------
 CREATE TABLE car (
   id SERIAL PRIMARY KEY NOT NULL,
@@ -486,3 +639,69 @@ SELECT
   *
 FROM
   car;
+
+------------------------ CREATE car TABLE -------------------------
+CREATE TABLE person1 (
+  id SERIAL NOT NULL PRIMARY KEY,
+  username VARCHAR(255),
+  gender VARCHAR(255),
+  car_id INT REFERENCES car (id)
+);
+
+INSERT INTO
+  person1 (username, gender, car_id)
+VALUES
+  ('Adel', 'Male', 1);
+
+INSERT INTO
+  person1 (username, gender, car_id)
+VALUES
+  ('Hamid', 'Male', 2);
+
+SELECT
+  *
+FROM
+  person1
+  JOIN car ON person1.car_id = car.id;
+
+SELECT
+  username,
+  gender,
+  make,
+  model,
+  price
+FROM
+  person1
+  JOIN car ON person1.car_id = car.id;
+
+SELECT
+  username,
+  gender,
+  make,
+  model,
+  price
+FROM
+  person1
+  LEFT JOIN car ON person1.car_id = car.id;
+
+SELECT
+  username,
+  gender,
+  make,
+  model,
+  price
+FROM
+  person1
+  RIGHT JOIN car ON person1.car_id = car.id
+WHERE
+  car.* IS NULL;
+
+SELECT
+  username,
+  gender,
+  make,
+  model,
+  price
+FROM
+  person1
+  RIGHT JOIN car ON person1.car_id = car.id;
