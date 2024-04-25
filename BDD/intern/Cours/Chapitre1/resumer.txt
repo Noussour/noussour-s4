@@ -1,0 +1,27 @@
+1.Generalite sur les bdd /2. modele logique relationnel /3.Interrogations des bdd et SQL
+
+## donnes : (des objects) et (des relation entre objects)
+## base de donnees : (ensemble structuree de donnees enregistrer sur un ordi et accessible par plusieur utilisateur)(ensemble de fichier(ensomble d'infos liee a un sujet) semantiquement liee) (eviter les redondances et incoherences / partage de donnees) (offre un haut langages pour interroger / controle de confidentialite et securite des donnes) (une base pour tous app) (un seul stockage) (controle de vue)
+
+
+## SGBD : systeme de gestion de base de donnees : collection de logiciels qui permet l'interaction avec la bdd (Decrire,Manipuler(ajout/modif/suppretion),traiter(selection/trie/calcule/agreger...),definir des contraites d'integrite sur les donnees(domaines,existance ....)) (protection d'acces /blocage/sauvegarde/journal) (interogation directe et reponses reapides) (independante de la structure physique et logique des donnees (maintenace facile)) (integrite des donnees (Centraliser)) (securite (controle cnetraliser))
+
+## 60:systeme de genstion de fichier --> 70: s.gestion de bdd reseau et hierarchiques ---> late70: sortie du papier CODD fondament de la theorie bdd relationnelles --> 80 :sgbd relationnel au marche ---> 90: dominance du sgbd relationnel et debut des sgbd oo
+
+
+## Construction d'une bdd : Analyse -> MCD -> MLD -> MPD
+    ### MCD : modele entite association : 1976 Chen; (entite : chose distinctement identifiee) (Association : lien entre entites) (Propriete /attribut ) (propriete cle : identifiant) (Occurence : instance) (cardinalite = contrainte"loi") (Dimention d'association = nb de pattes : entite relie) (association reflexive = lie des eccurences de la meme entitt dim=2)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
