@@ -1,1 +1,44 @@
- 
+# Chapitre 2 : MLD (modele logique de donnees : Modeles relationnel)
+
+modele : ensemble doutils utilises pour decrire et manipuler des donnees
+modele logique : une representation du systeme tel qu'il sera implemente dans les ordis(modele relationnel) != mcd != implementation physique (Access ou oracle)
+    Domaine ---->(representer) MCD -----> (traduit) MLD ------>(implementer) MPD
+
+## Modele relationnel : (creee par CODD IBM 69/70)(base de plupart de SGBD)(langage d'interrogation et de requete simple)(relation ou table pour decrire les donnees et les liens)(defini par notion d'ensemble)
+
+MCD ---> MLD Relationnel :
+
+            *Entites et certaines associations de viennent de raltions (tables) : (sous ensemble de produit cartesien du n domaines d'attribut)(caracterisee par : nom,champs(colonnes),n-uples (tuples) correspondent aux combinaisons valide (ligne) ; R(A1:D1,A2:D2,.....) ou R est le nom de la relation
+
+            *proprietes deviennent des attributs (champs)
+            *des cles etrangers indispensables aux relations (liens) entre les donnees
+
+            -degree d'une relation/Ordre/Arite : nombre d'attribut /colonnes
+            -(pas de ligne edentique)(ordre des ligne et colonnes non important)(chaque case contient qu'une seule valeur)
+            -pour identifier la ligne la relation doit avoir une cle(groupe d'attribut minimal qui determine un tuple de maniere unique dans une relation)
+
+## BDD Relationnel : le shema est un ensemble de relation et les occurences sont les tuples des relations
+## SGBDR : logiciel supportant le modele relation, avec des manipulation avec des opperateurs relationnels
+
+## Cle primaire(irreductible+unique+non nulle) : Simple(un attribut) / composee (plusieurs attributs)
+                 *cle candidate(un attribut dans la relation)
+                 *#cle etrangers (attribut dans une relation et cle dans une autre)
+                 *cle referentielle (permet de faire le lien entre relation)
+
+## MCD en Relation a parir des cardinalite :
+                A x,n - x,1 B : la cle de l'entite de x,n (A) devient une cle etrangers dans l'entite x,1 (B)
+
+                x,n -x,n : une relation supplementaire avec cle composee etrangers des deux cles des entite
+
+                A 0,1 - 1,1 B : cles primaire de A devient etrangers dans B
+
+                0,1 - 0,1 : la cles d'une devient etrangers dans une autre
+
+## Contraintes d'integrite : -assertion(condition) doit etre vrai tout la vie de la bdd ; limite les possibilites des valeurs affecter aux champs ,executer a chaque mise a jour de la bdd , la bdd est dites coherente si toutes les Contraintes d'integrite sont verifirees
+                    {integrite de cle / de domaine(type)/ reference}
+                    -cle : doit exister, unique et non nulle dans chaque relation
+                    -domaine : tout attribut appartient a un domainefini ou non fini
+                    -reference (concerne les cles etrangers) : tout tupe d'une relation faisant reference a une autre relation doit se refere a un tuple existant (tuple reference dega saisi das la table referencee)
+
+
+
