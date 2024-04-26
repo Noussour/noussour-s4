@@ -1,15 +1,50 @@
 public class Model {
-  public void setOperation(int operation, int number) {}
+  private int total;
+  private int secondNumber;
 
-  public void doOperation(int operation) {}
+  public void setOperation(int operation, int number) {
+    this.secondNumber = number;
+    this.doOperation(operation);
+  }
 
-  public void resetTotal() {}
+  public void doOperation(int operation) {
+    switch (operation) {
+      case 1:
+        add(secondNumber);
+        break;
+      case 2:
+        sub(secondNumber);
+        break;
+      case 3:
+        mul(secondNumber);
+        break;
+      case 4:
+        div(secondNumber);
+        break;
+    }
+  }
 
-  public void add(int number) {}
+  public void resetTotal() {
+    this.total = 0;
+  }
 
-  public void sub(int number) {}
+  public void add(int number) {
+    this.total += number;
+  }
 
-  public void mul(int number) {}
+  public void sub(int number) {
+    this.total -= number;
+  }
 
-  public void div(int number) {}
+  public void mul(int number) {
+    this.total *= number;
+  }
+
+  public void div(int number) {
+    this.total /= number;
+  }
+
+  public int getTotal() {
+    return this.total;
+  }
 }

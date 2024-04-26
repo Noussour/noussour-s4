@@ -2,14 +2,31 @@ import java.awt.*;
 import javax.swing.*;
 
 public class Vue extends JFrame {
-  public Model model;
-  public Controler controler;
+  JTextField textField =
+      new JTextField(20); // Create a Dimension object with the desired width and height
+  Dimension dim = new Dimension(600, 50);
+  // Affichage de la fenetreJPanel panel1 = new JPanel();
 
-  // Affichage de la fenetre
+  JButton button0 = new JButton("1");
+  JButton button1 = new JButton("2");
+  JButton button2 = new JButton("3");
+  JButton button12 = new JButton("+");
+  JButton button3 = new JButton("4");
+  JButton button4 = new JButton("5");
+  JButton button5 = new JButton("6");
+  JButton button13 = new JButton("-");
+  JButton button6 = new JButton("7");
+  JButton button7 = new JButton("8");
+  JButton button8 = new JButton("9");
+  JButton button11 = new JButton("=");
+  JButton button9 = new JButton("0");
+  JButton button10 = new JButton("*");
+  JButton button14 = new JButton("/");
+  JButton button15 = new JButton("");
 
-  Vue(Model model, Controler controler) {
-    this.model = model;
-    this.controler = controler;
+  Controller controller;
+
+  Vue() {
     // Créer un panneau
     JPanel contenuFenetre = new JPanel();
     // Affecter un gestionnaire de disposition à ce panneau
@@ -17,9 +34,7 @@ public class Vue extends JFrame {
     contenuFenetre.setLayout(disposition);
 
     // Créer un champ de texte
-    JTextField textField =
-        new JTextField("Hello", 20); // Create a Dimension object with the desired width and height
-    Dimension dim = new Dimension(600, 50);
+
     JPanel panel = new JPanel();
     // Set the preferred size of the text field
     panel.setPreferredSize(dim);
@@ -28,27 +43,28 @@ public class Vue extends JFrame {
     panel.add(textField);
     contenuFenetre.add("North", panel);
 
-    // Créer un panneau pour les boutons
-    JPanel panel1 = new JPanel();
-    GridLayout layout1 = new GridLayout(4, 4);
-    panel1.setLayout(layout1);
-    JButton button0 = new JButton("1");
-    JButton button1 = new JButton("2");
-    JButton button2 = new JButton("3");
-    JButton button12 = new JButton("+");
-    JButton button3 = new JButton("4");
-    JButton button4 = new JButton("5");
-    JButton button5 = new JButton("6");
-    JButton button13 = new JButton("-");
-    JButton button6 = new JButton("7");
-    JButton button7 = new JButton("8");
-    JButton button8 = new JButton("9");
-    JButton button11 = new JButton("=");
-    JButton button9 = new JButton("0");
-    JButton button10 = new JButton("*");
-    JButton button14 = new JButton("/");
-    JButton button15 = new JButton("");
+    // add action listener to buttons
+    button0.addActionListener(controller);
+    button1.addActionListener(controller);
+    button2.addActionListener(controller);
+    button12.addActionListener(controller);
+    button3.addActionListener(controller);
+    button4.addActionListener(controller);
+    button5.addActionListener(controller);
+    button13.addActionListener(controller);
+    button6.addActionListener(controller);
+    button7.addActionListener(controller);
+    button8.addActionListener(controller);
+    button11.addActionListener(controller);
+    button9.addActionListener(controller);
+    button10.addActionListener(controller);
+    button14.addActionListener(controller);
+    button15.addActionListener(controller);
 
+    // Créer un panneau pour les boutons
+
+    JPanel panel1 = new JPanel();
+    panel1.setLayout(new GridLayout(4, 4));
     panel1.add(button0);
     panel1.add(button1);
     panel1.add(button2);
@@ -86,28 +102,36 @@ public class Vue extends JFrame {
     this.setContentPane(contenuFenetre);
     // Positionner les dimensions et rend la fenêtre visible
     this.setSize(600, 300);
-    this.setVisible(true);
     this.setResizable(false);
   }
 
   // important functions :
   public void ajouteSaisie(String s) {
-    // ajoute un chiffre à la saisie
+    textField.setText(textField.getText() + s);
   }
 
-  public void afficheTotal() {
-    // affiche le total
+  public void afficheTotal(int total) {
+    textField.setText(String.valueOf(total));
   }
 
   public boolean entreeValid() {
-    return false;
+    try {
+      Integer.parseInt(textField.getText());
+      return true;
+    } catch (NumberFormatException e) {
+      return false;
+    }
   }
 
   public void erreur(String s) {
-    // affiche une erreur en utilisant JOptionPane
+    JOptionPane.showMessageDialog(this, s, "Error", JOptionPane.ERROR_MESSAGE);
   }
 
   public int getEntree() {
-    return 0;
+    return Integer.parseInt(textField.getText());
+  }
+
+public void setController(Controller controller) {
+    this.controller = controller;
   }
 }
