@@ -40,5 +40,37 @@ MCD ---> MLD Relationnel :
                     -domaine : tout attribut appartient a un domainefini ou non fini
                     -reference (concerne les cles etrangers) : tout tupe d'une relation faisant reference a une autre relation doit se refere a un tuple existant (tuple reference dega saisi das la table referencee)
 
+## Normalisation (norma=regle): pour construire un shema de bdd coherent en evitont les anomalies transactionnelles d'une mauvaise modelisation (anomalie de lecture/d'ecriture + redondance et contre performance) (minimisation d'espace de stockage) (ameliore la modelisation)
+
+                *anomalie de modification : une mise a jour d'un attribut doit se faire pour l'ensemble des tuple
+                *anomalie d'insertion: l'ajout d'un attribut doit se suivre par l'ajout des attribut concernont les tuple dont l'attribut appartient
+                *anomalie de suppression: une suppression d'un attribut se suit par la suppression de tous les attribut de son tuple
+
+        -Le modele relationnel est dit normaliser si il respecte les formes normales(qui s'appuit sur les dependances fonctionnelles entre attributs)
+
+        -Deux rubriques(colonnes) sont en Dependance fonctionnelles si Connaitre la valeur d'une permet de connaitre la valeur de l'autre
+                    R1 -> R2 : R1 est la source de la DF et R2 est le but ;
+                    numFacture, code produit -> quantite facturee (DFPGC) dependances fonctionnelles a partie gauche composee
+
+        ### type de dependances:
+
+        -Une df est elementaire R1->R2 s'il n'existe pas une R3, sous ensemble de R1 qui assrue R3 -> R2
+                    (Num facture,reference article) -> nom article ; n'est pas fonc car Num facture n'a rien a avoir avec nom article
+        -Une df est directe R1 -> R2 s'in n'existe pas une R3(ou collection de rubriques) qui engendrait une df transitive de sorte que :
+                    R1 -> R3 -> R2
+
+        ### Graphe de dependances fonctionnelles : R1 -> R2 en graphe orientee
+
+        ### 1FN : une relation ayant une cle dont les attributs possedent tous une valeur semantiquement atomique (aucune subdivision de l'info initiale n'apporte une infos supplementaire ou complmentaire)
+            -Normalisation en 1F : l'attribut non attomique doit etre decompose en ses different attributs atomique, par exemple le prenom (un etudiant peut avoir plusieurs prenoms) pour ca il faut ajouter une relation PRENOM qui contient les different prenoms .
+
+        ### 2FN : une relation est en 2fn si elle est en 1fn et chacun des attributs ne faisant pas partie de la cle primaire est en dependance fencotionnelle elementaire avec la cle primaire (une relation 1fn avec un attribue en cle primaire est 2fn) (le prblm se pose seulement avec les tables a cle primaire compose)
+            -Normalisation en 2F : (Decomposer la relation initiale en plusieurs nouvelle relation de nombre lie au DF non elementaire)
+                en pose le nom de la relation X (en la divise par DF elementaire en relation) puis en choisi les noms adeqoit
+
+
+
+
+
 
 
