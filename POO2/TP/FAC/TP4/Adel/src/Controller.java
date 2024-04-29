@@ -12,14 +12,9 @@ public class Controller {
     this.vue.addCalculationListener(new CalculationListener());
   }
 
-
-
-
-
   public class CalculationListener implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
-      System.out.println("Button clicked ");
       if (e.getSource() == vue.button1) {
         vue.ajouteSaisie("1");
       } else if (e.getSource() == vue.button2) {

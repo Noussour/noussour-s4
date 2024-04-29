@@ -21,6 +21,8 @@ public class Model {
       case 4:
         div(secondNumber);
         break;
+      default:
+        break;
     }
   }
 
