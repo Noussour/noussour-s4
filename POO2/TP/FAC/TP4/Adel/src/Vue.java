@@ -8,11 +8,11 @@ public class Vue extends JFrame {
   Dimension dim = new Dimension(600, 50);
   // Affichage de la fenetre
 
-    JButton addButton = new JButton("+");
-    JButton subButton = new JButton("-");
-    JButton mulButton = new JButton("*");
-    JButton divButton = new JButton("/");
-    JButton eqButton = new JButton("=");
+  JButton addButton = new JButton("+");
+  JButton subButton = new JButton("-");
+  JButton mulButton = new JButton("*");
+  JButton divButton = new JButton("/");
+  JButton eqButton = new JButton("=");
   JButton resetButton = new JButton("C");
 
   JButton button0 = new JButton("0");
@@ -45,7 +45,6 @@ public class Vue extends JFrame {
     contenuFenetre.add("North", panel);
 
     // Créer un panneau pour les boutons
-
 
     JPanel panel1 = new JPanel();
 
@@ -119,5 +118,4 @@ public class Vue extends JFrame {
     eqButton.addActionListener(calcListener);
     resetButton.addActionListener(calcListener);
   }
-
 }
