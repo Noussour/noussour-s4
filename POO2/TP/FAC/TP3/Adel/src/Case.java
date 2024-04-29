@@ -17,8 +17,12 @@ public class Case {
         } else {
           g.setColor(Color.BLACK);
         }
-        g.fillRect(i * 100, j * 100, 100, 100);
+        g.fillRect(i * 50, j * 50, 50, 50);
       }
     }
+  }
+
+  public Color getColor(int x, int y) {
+    return (x + y) % 2 == 0 ? Color.WHITE : Color.BLACK;
   }
 }
