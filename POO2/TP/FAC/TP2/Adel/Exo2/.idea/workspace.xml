@@ -2,12 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="56812f0f-7e75-4e69-9724-a83c108c361d" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../Exo1/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Exo1/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Exo1/out/production/Exo1/.idea/copilot/chatSessions/00000000000.xd" beforeDir="false" afterPath="$PROJECT_DIR$/../Exo1/out/production/Exo1/.idea/copilot/chatSessions/00000000000.xd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Exo1/out/production/Exo1/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Exo1/out/production/Exo1/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Exo2/.idea/copilot/chatSessions/00000000000.xd" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Exo2/.idea/copilot/chatSessions/00000000000.xd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Exo2/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Exo2/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/copilot/chatSessions/00000000000.xd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/copilot/chatSessions/blobs/version" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/copilot/chatSessions/xd.lck" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,7 +31,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/home/adel_hb/Desktop/Adel/FAC (S4)/NOUSSOUR-S4/POO2/TP/FAC/TP3",
+    "last_opened_file_path": "/home/adel_hb/Desktop/Adel/FAC (S4)/NOUSSOUR-S4/POO2/TP/FAC/TP3/Adel",
     "nodejs_package_manager_path": "npm",
     "vue.rearranger.settings.migration": "true"
   }
@@ -42,8 +39,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9f38398b9061-18abd8497189-intellij.indexing.shared.core-IU-241.14494.127" />
-        <option value="bundled-js-predefined-1d06a55b98c1-74d2a5396914-JavaScript-IU-241.14494.127" />
+        <option value="bundled-jdk-9f38398b9061-39b83d9b5494-intellij.indexing.shared.core-IU-241.15989.69" />
+        <option value="bundled-js-predefined-1d06a55b98c1-2e7d6887c066-JavaScript-IU-241.15989.69" />
         <option value="jdk-11.0.21-corretto-11.0.21-9be69aac17ab-05657b60" />
       </set>
     </attachedChunks>
@@ -60,6 +57,7 @@
       <workItem from="1710837734432" duration="43000" />
       <workItem from="1710838590616" duration="87000" />
       <workItem from="1710838982972" duration="7000" />
+      <workItem from="1714400637751" duration="21000" />
     </task>
     <servers />
   </component>

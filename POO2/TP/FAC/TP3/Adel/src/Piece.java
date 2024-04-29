@@ -4,10 +4,14 @@ import javax.swing.*;
 public class Piece {
   private final Graphics g;
   private final int[][] m;
+  public int x, y, id;
 
-  public Piece(Graphics g, int[][] m) {
+  public Piece(Graphics g, int[][] m, int x, int y) {
     this.g = g;
     this.m = m;
+    this.x = x;
+    this.y = y;
+    this.id = m[y][x];
     this.draw();
   }
 
