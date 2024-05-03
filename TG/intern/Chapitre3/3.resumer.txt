@@ -1,1 +1,38 @@
- 
+# Arbre de couverture optimal :
+
+
+  ## Condition suffisante pour que G soit un graphe:
+  n>=2
+    1.G est connexe et sans cycles
+    2.G est connexe admet n-1 arcs ou arretes
+    3.G n'admet aucun cycle admet n-1 arcs ou arretes
+    4.G est sans cycle maximal (arc ou arrete supplementaire pour cree un cycle)
+    5.G est connexe minimal (la suppression d'un arc ou arete quelconque le rend non connexe)
+    6.pour toute paire de sommetes (x!=y) il existe dant G une chaine et une seule joignant x a y
+
+    ## Codage de pruffer :
+        -prendre les feuilles de degre 1
+        -prendre le minimum (le supprimer et ajouter son adjacent a la liste P)
+        -refaire jusqu'a nombre de sommet = 2 ;
+
+    ## Decodage de pruffer :
+        -on cree un tableau de taille |p|+2 et initialiser c'est colonne a 1
+        -mettre a jour les colonne ont ajoutont le nombre d'occurence de la colonne dans P
+        -cree un graphe isolee de meme taille que le tableau
+       * -cree l'arrete reliont la colonne min de valeur 1 et la premier valeur de p / substraire 1 des deux colonne du tableau
+       * -sotee au deuxieme valeur
+       * -repeter jusqu'au tableau remplie de 0
+
+    ## Arbre de couverture d'un graphe : = Le sous graphe partiel de G=(X,U) H=(Y,V) connexe et sans cycles ,Arbre maximal dans G s'il contient le max de sommets (Y=X)
+
+    ## Graphe pondere :(value) (reseau) (G=(X,U,p)) un graphe oriente auquelle on associer des valeur a chaque arc
+
+    ## Algorithme de Kruksal (trouver un arbre de couverture optimal) depuis un graphe connexe valué
+        -ordonne les arretes par poids
+        -Redessiner les sommets et choisir les arcs qui ne crie pas de cycle
+
+        *pour l'arbre de poids max : meme etape mais prendre le graphe complet et soustraire des arrete jusqu'a quil ne contient aucun cylcle
+
+    ## Algorithme de Prim : (Trouver l'ensemble d'arc forement l'arbre de couverture)
+        -ordonee les arrete par poids plus faible
+        -contracter chaque sommet indicent a une arrete
