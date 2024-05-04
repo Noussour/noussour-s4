@@ -1,0 +1,8 @@
+
+
+## ford-flurkson :
+    -Dessiner graphe residuelle
+    -choisir un chemin d'augmentation
+    -ajouter jusqu'a saturation de un de ses flux
+    -redissiner le graphe normal
+    -refaire jusqua'a aucun chemin d'augmentation*
