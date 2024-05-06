@@ -43,6 +43,7 @@
         environement d'un SI===> environement interne (SP+SO) + environement externe
         Charger des decisions Programmable et de transmettre des taches du sp aux so ou des message du so aux sp et des messages vers l'exterieur + Collecter/distribuer/traiter/memoriser l'information
     ### Table Decisions : entree limite(boolean)/etendue
+                    -suprime les decisions redendent et inutille et non pertinente(ne contribue pas a la prise de decision)
 
     ## flux : succession d'evenement (ensemble d'infos vehiculees simultanement entre 2 stations)
     ## station : point d'utilisation /controle /traitement
@@ -127,10 +128,81 @@
 
 
 ------------------------------------------------------------------------------------------------------------------
-# Chapitre3: Modelisation de l'information
+# Chapitre3: Conception des Systemees d'information
+
+        ## Conception sans methode
+            * Synonymes (plusieurs termes qui ont le même sens)
+            * Polysémies (un terme qui a plusieurs sens différents)
+            * Utilisateur non intégré dans la conception du SI
+            * Difficulté de planification et de suivi du travail
+            * Difficulté d’une maintenance efficace
+
+        ## Une méthode est une démarche raisonnée composée d’étapes. Dans une méthode on trouve un formalisme, des étapes, des outils (automatisés ou non) et des modèles.
+
+        *Il y’a eu d’abord les méthodes cartésiennes (années 70) puis systémiques (années 80) puis orientées objet ( a partir des années 90).Merise,Axial, E/A Chen, OMT....
+
+        ## Etapes d'une methode
+            1-Etude préalable 2-Etude détaillée 3-Conception 4-Réalisation et mise en oeuvre 5-Tests et jeux d’essais 6-Maintenance
+
+        ##  Conception: Création d’un objet, d’un système : action qui donne naissance à quelque chose qui n’existait pas.
+
+        ## Une Base de Données (BD) est un ensemble structuré de données ayant un sens et accessibles par l’ordinateur pour satisfaire simultanément plusieurs utilisateurs.
 
 
 
+        ## La conception d’un SI (doit etre durable) consiste en :
+                ◦ Une modélisation de l’entreprise (pour une vision globale : modèle systémique),
+                ◦ Une modélisation de ses aspects statiques (données : entités et association inter-entités);
+                ◦ Une modélisation de ses aspects dynamiques (traitements : opérations déclenchées par des événements).
+
+        ## Niveau conceptuel :Ce niveau définit les finalités de l’entreprise,« que fait le système? », le niveau le plus stable  (MCD/MCT)
+
+                ## MCD s’intéresser à la donnée elle-même, ses sens et ses usages; pour la decrire independamment de choix d'implementation physique
+
+                    ### Dictionnaire de données :tableau qui regroupe toutes les données du SI; (code,designation,type,taille,observation)----> doit etre epuree(elemination des Synonymes et Polysémies)
+
+                    ### Modele E/A :(Chen 76)
+                        *Entité : Tout objet concret ou abstrait ayant une existence propre et conforme aux besoins de gestion de l’organisation
+                        *Classe d’entités (ou entité-type) : Ensemble des entités décrites par les mêmes caractéristiques.
+
+                        *Association: n-uplet d’entités «sémantiquement liées».
+                        *Classe d’associations (ou association-type) :Regroupe toutes les associations constituées des mêmes types d’entités jouant le même rôle dans l’association.
+
+                        **Association reflexive : une classe d'association sur une seule classe d'entites
+
+                        * Propriété : donnée élémentaire permettant de caractériser les entités et associations.
+
+                        * Identifiant (cle): propriété ou groupe de propriétés permettant d’identifier de manière unique chaque occurrence de la classe d’entités.
+
+                        * Cardinalités : indiquent pour chaque classe d’entités de la classe d’association, les nombres mini et maxi d’occurrences de l’association pouvant exister pour une occurrence de l’entité.
 
 
+                ##La suppression des associations transitives Toute association pouvant être obtenue par transitivité de n autres associations peut être supprimée. La transitivité s’évalue en regardant la signification des associations.   X->Y et  Y->Z et X->Z : avec -> ayant les exacts meme cardinalite on peut supprimer X->Z
+
+
+                ## contraintes d’intégrité « CI »importantes: (Les CI définissent des propriétés qui doivent être vérifiées par les données de la base.)
+
+                a-Contrainte d'identifiant :Les valeurs prises par l’identifiant sont uniques
+                b-Contraintes de cardinalité :Les cardinalités portées par les entités membres d’association imposent des nombres minis et maxis d’occurrence dans l’association.
+
+                ##Le Modèle Logique des Données (MLD) est une étape intermédiaire pour passer du modèle E/A, qui est un modèle sémantique, vers une représentation physique des données : fichiers, SGBD hiérarchique,SGBD réseau, SGBD relationnel.
+                    *Entité : Toute Entité devient une table dont la clé primaire est l'identifiant de l'Entité.
+                    *Association binaire: se traduit en ajoutant une clé étrangère
+
+                        A     B
+                       x-1 : x-n : A recoit la PK de B comme FK et les propriete de l'assotiation
+                       x-n : x-n : nouvelle table pour l'association
+                       0-1 : 1-1 : B recoit la PK de A comme FK et les propriete de l'assotiation
+
+                    *pour une association n-aire une table est cree comme suite Assure (no_classe*, no_matiere*, no_prof*, propAssociation)
+
+            ## MCT  Décrit le fonctionnement du SI d’une organisation au niveau conceptuel
+
+        ## Niveau organisationnel (ou logique) :Il définit l’organisation à mettre en place dans l’entreprise, moins stable.«comment?», « qui fera quoi, où et quand? » (MLD/MLT)
+
+        ## Niveau opérationnel (technique ou physique) : Ce niveau est le moins stable. Il définit l’ensemble des moyens techniques, composé de machines, de programmes et de fichiers, pour répondre aux objectifs posés. (MPD / MopT)
+
+
+        ## Objet = Entité pourvue d’une existence propre;  Relation = Relation entre ces entités;
+        ## Traitement : opération déclenchée par un évènement; Evènement : fait réel déclenchant une ou plusieurs actions
 
