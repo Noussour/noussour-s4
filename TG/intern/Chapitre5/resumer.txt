@@ -1,0 +1,24 @@
+ # Chapitre 5 Problème d’ordonnancement (examination d'un projet)
+
+    ## L’étude du graphe revient à déterminer un chemin de poids optimal
+
+    ## contraintes de potentielles : Tj-Ti>=Dij
+
+    ## Graphe potentiels de taches : MPM(methode potentiels Metra)
+
+    ## Marge totale : date au plus tard - date au plus tot
+    ## Tache critique : marge = 0
+    ## Marge libre : delai de retard d'une tache
+    ## Marge certaine : delai de retard d'une tache si les taches anterieures commencent a leurs dates au plus tard et posterieures au dates plus tot
+
+    ## Chemin critique = 0 - tache critique - fin
+
+
+
+
+
+
+
+
+
+

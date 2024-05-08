@@ -30,5 +30,12 @@
 
   ## Djikstra O(m^2) m=nombre d'arc : (tous les poids sont positive ou nuls pour eviter les circuit absorbants)
 
+            *Dessiner un tableau avec les iteration et les sommet (colone potentiel et colone precedent)
+            *commencer par le sommet source et calculer toute les possibilite de potentiel
+            *iterer a chaque fois en choisissant le sommet de potentiel minimum
+            *cocher les arrete contenent des sommets deja calculer
+            *cocher les potentiel dans la meme colone maximal (laisser seulement le plus petit)
+
+
         -l'algorithme retourne une arborescence optimale
         -si le graphe est non orietne on associer a chaque arrete deux arc du meme poids
