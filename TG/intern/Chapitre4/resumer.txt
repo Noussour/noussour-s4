@@ -1,1 +1,34 @@
- 
+ # Cheminement dans les graphes :
+
+ ## Graphe sans circuit :
+    -Si toute composante fortement connexe est reduit a un sommet
+    -Si il est isomorphe a son graphe reduit
+    -si tout chemin dans G est elementaire
+
+    *source = dG-(x)=0
+     puis = dG+(x) =0
+     -tout graphe sans circuit possede une source et un puis
+        -l'extremite initial du plus long chemin vers x est la source
+        -l'extremite terminal du plus long chemin vers x est le puis
+
+  ## Niveau d'un sommet : v(x)= longueur max d'un chemin elementarire se terminant a x
+
+  ## pois d'un chemin : p(x) = somme des poids d'arc vers le chemin
+        -un circuit est dit absorbant si son poids est negatif
+
+  ## chemin optimal : affecter a chaque sommet un chemin de poids minimal vers la source ; (potentiel)
+
+
+  ## Algorithme de bellman-ford O(n^2) : (Graphe sans circuit(pour eviter les circuit absorbants)) (l'algorithe retourne l'arborescence optimale)
+
+            *mettre le graphe en niveua
+            *donner a chaque sommet un potentiel et le sommet qui le precede : priorite au potentiel le plus bas
+
+        -si le chemin optimal est le chemin de poids max , on change <<min>> par <<max>> et <<+infinie>> par <<-infinie>>
+        -si pour tous sommet le poids est 1 ; l'algorithme calcule le nombre d'arcs,
+        -on peut tout a fait commencer par un sommet different de la source
+
+  ## Djikstra O(m^2) m=nombre d'arc : (tous les poids sont positive ou nuls pour eviter les circuit absorbants)
+
+        -l'algorithme retourne une arborescence optimale
+        -si le graphe est non orietne on associer a chaque arrete deux arc du meme poids
