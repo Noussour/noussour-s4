@@ -1,4 +1,5 @@
 
+## Flot complet :Tout chemin de e vers s passe par un arc saturé.
 
 ## ford-flurkson :
     -Dessiner graphe residuelle
