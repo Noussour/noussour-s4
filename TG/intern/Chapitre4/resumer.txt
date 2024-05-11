@@ -21,7 +21,7 @@
 
   ## Algorithme de bellman-ford O(n^2) : (Graphe sans circuit(pour eviter les circuit absorbants)) (l'algorithe retourne l'arborescence optimale)
 
-            *mettre le graphe en niveua
+            *mettre le graphe en niveau
             *donner a chaque sommet un potentiel et le sommet qui le precede : priorite au potentiel le plus bas
 
         -si le chemin optimal est le chemin de poids max , on change <<min>> par <<max>> et <<+infinie>> par <<-infinie>>
