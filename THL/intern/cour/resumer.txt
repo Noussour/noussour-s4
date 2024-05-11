@@ -1,0 +1,93 @@
+Chapitre 0 : intro
+
+    # THL en informatique, en linguistique, en biologie, la compilation, la recherche de motifs, le traitement automatique des langues naturelles, la vérification des circuits électroniques, le traitement de l'image, et la bio-informatique
+
+    #La théorie des langages, vise à décrire et reconnaître formellement les langages à l'aide de notions telles que les grammaires et les automates. Cette théorie trouve des applications dans des domaines comme
+
+    #Le langage (naturelles/programmation) est un ensemble de phrases ou de mots qui obéissent à certaines règles.(Les langages servent à communiquer, décrire des systèmes ou des documents, de formaliser des problèmes pour les résoudre )
+
+Chaptire 1 : notions fondamentals------------------------------------------------------------------------------------------
+
+    #ALPHABET : Un alphabet X est un ensemble fini et non vide. Les éléments de cet ensemble sont appelés des lettres ou symboles.
+
+    #MOTS :Un mot sur un alphabet X est une suite finie, éventuellement vide,d’éléments de X.
+            *Le mot vide (suite vide d’éléments) est noté ԑ .
+            *L’ensemble des mots formés à partir d’un alphabet X est noté X*.
+            *X+ est l’ensemble des mots non vides. On a X*=X+ U {ԑ }. (infinie)
+        ##Operations sur les MOTS
+        1) Concaténation : juxtaposition de deux mot w1 et w2 (w1.w2)(w1w2) (associative,ԑ element neutre, pas commutative)
+        2) Longueur : On appelle longueur d’un mot w sur un alphabet X la somme des occurrences des différents symboles le constituant. Elle est notée lg(w) (ou | w |) ,(application de X* vers N)
+        3)Miroir : On appelle mot miroir d’un mot w, noté Mir(w) ou wR le mot obtenu en inversant les symboles de w.
+        4)Puissance :Définition: La puissance d’un mot est définie par récurrence de la manière suivante :
+                    w^0 = ԑ
+                    w^n+1 = w^n.w
+        5) Factorisation Soient v et w deux mots de X*.
+            v est facteur ou sous-mot du mot w si et seulement s’il existe deux mots u1, u2 appartenant à X* tel que : w= u1.v.u2
+                o Le mot v est facteur propre du mot w si u1 !=ԑ  et u2 !=ԑ  .
+                o Le mot v est facteur gauche (ou préfixe) de w si u1!=ԑ .
+                o Le mot v est facteur droit (ou suffixe) de w si u2!=ԑ
+
+
+    #LANGAGE :Soit X un alphabet. On appelle langage formel défini sur X tout sous-ensemble de X*.
+                    -langage vide (O bar) (ne contient aucun mot)
+                    -langage propre ne contient pas le mot vide.
+                    -langage fini contient un nombre fini de mots.
+                    -langage infini est un langage qui contient une infinité de mots.(ni vide ni finie)
+                            *semi-decidable = decrits par une grammaires formelle
+                            *non-decidable = ne peut pas etre decrits
+
+        ##Operations sur les LANGAGES : (toute operation sur les mots) + Union ,Intersection :L1 ∩ L2 ,Complément ,Différence :L1 − L2 ,Produit :L1 × L2
+
+        L1.(langage vide) = langage vide
+        ԑ . L1 = L1
+
+        Fermeture itérative ou Etoile de Kleen L* ,L’étoile propre (ou ԑ libre) L +
+         si ԑ appartient L alors ԑ appartient L* et L +
+         si ԑ n'appartient pas L alors ԑ appartient seulement a L*
+
+#Chapitre 2 :GRAMMAIRE -----------------------------------------------------------------------------------------------------------------
+     ## GRAMMAIRE(systeme de substitution) : Un langage peut être décrit comme étant un ensemble de mots satisfaisant un certain nombre de règles appelées grammaire.
+
+            G=(T, N, S, P) où :
+                * T est un ensemble non vide de terminaux (l’alphabet sur le quel est défini le langage).
+                * N est un ensemble de non-terminaux tel que T inter N= vide, ce sont des symboles intermédiaires pour produire de nouveaux objets (c’est les symboles qu’il faut encoredéfinir). Ils sont désignés par les lettres majuscules de l’alphabet Latin
+                *S appartenant a N est appelé axiome (le point de départ).
+                * P est un ensemble de règles de productions ou de réécritures.
+
+    ## derivation directe : w1=>w2 (w1 derive (produit) w2)(w2 derive directement a partir de w1) si il existe une regle de produciton:
+        a->b tellque w1=uav, w2=ubv
+    ## derivation indirecte : w1=>*w2 w1 dérive (ou produit) indirectement w2
+
+    ##Le langage engendré par une grammaire G=(T,N,S,P), noté L(G), est exactement l’ensemble des mots appartenant à T* générés (directement ou indirectement) à partir de l’axiome.
+
+    ## Une règle d’arrêt : S -> ab
+    ## Une règle récursive : S -> aSb
+
+    ##Deux grammaires G1 et G2 sont dites équivalentes, notées G1  G2, si elles engendrent le même langage. G1 -= G2 <-> L(G1)=L(G2)
+    ## Un langage peut être généré par plusieurs grammaires, mais une grammaire ne génère qu’un seul langage.
+
+    #Classification des grammaires :Noam Chomsky a décomposé les grammaires formelles en catégories de pouvoir d’expression croissant, c’est-à-dire en groupes successifs pouvant chacun générer une variété de langages plus large que le groupe précédent.
+
+    #Type 3 (Grammaires régulières) : Une grammaire G=(T, N, S, P) est de type 3 ssi elle est soit régulière droite soit régulière gauche.
+                A->wB / B appartenant (N*) / w appartenant (T*)
+
+
+    #Type 2 (Grammaires algébriques ou grammaires à contexte libre) :Une grammaire G=(T, N, S, P) est de type 2 si et seulement si toutes les productions de P sont de la forme : A -> a : A appartenant a N (un seul non terminal)
+
+    #Type 1 (Grammaires Contextuelles ou contexte lié) :Une grammaire G=(T, N, S, P) est de type 1 si et seulement si toutes les règles de production de P sont de la forme :
+        aAb-> awb avec a,b appartenant(T u N)*, A appartenant N , w appartient(T u N)+ :  seul l’axiome peut générer le mot vide
+
+        ##Définition (Grammaires monotones) Une grammaire G=(T, N, S, P) est monotone si et seulement si toutes les règles de production sont de la forme :  a-> b avec |a|=<|b|  seul l’axiome peut générer le mot vide ne peut jamais décroitre.
+
+    #Type 0 (Grammaire sans restriction ou Grammaire Générale) Une grammaire G=(T, N, S, P) est de type 0 si la forme des règles de production dans P n’est l’objet d’aucune restriction
+
+    type 3 inclue type 2 inclue type 1 inclue type 0.
+
+
+     Les grammaires de type 3 génèrent les langages réguliers. automates d’états finis (AEF).
+     Les grammaires de type 2 génèrent les langages algébriques ou à contexte libre.  automates à piles (AàP).
+     Les grammaires de type 1 génèrent les langages contextuels ou à contexte lié . automates à bornes linéaires(ABL).
+     Les grammaires de type 0 génèrent tous les langages récursivement énumérables. machines de Turing.
+
+
+    Un langage est strictement de type i : 1- s’il est engendré par une grammaire de type i  et il n’existe pas de grammaire de type supérieur à i qui l’engendre
