@@ -75,7 +75,7 @@ Chaptire 1 : notions fondamentals-----------------------------------------------
     #Type 2 (Grammaires algébriques ou grammaires à contexte libre) :Une grammaire G=(T, N, S, P) est de type 2 si et seulement si toutes les productions de P sont de la forme : A -> a : A appartenant a N (un seul non terminal)
 
     #Type 1 (Grammaires Contextuelles ou contexte lié) :Une grammaire G=(T, N, S, P) est de type 1 si et seulement si toutes les règles de production de P sont de la forme :
-        aAb-> awb avec a,b appartenant(T u N)*, A appartenant N , w appartient(T u N)+ :  seul l’axiome peut générer le mot vide
+        aAb-> awb avec a,b appartenant(T u N)*, A appartenant N , w appartient(T u N)+ :  seul l’axiome peut générer le mot vide et dans ce cas il n'appait dans aucun membre droits d'une regle
 
         ##Définition (Grammaires monotones) Une grammaire G=(T, N, S, P) est monotone si et seulement si toutes les règles de production sont de la forme :  a-> b avec |a|=<|b|  seul l’axiome peut générer le mot vide ne peut jamais décroitre.
 
@@ -91,3 +91,90 @@ Chaptire 1 : notions fondamentals-----------------------------------------------
 
 
     Un langage est strictement de type i : 1- s’il est engendré par une grammaire de type i  et il n’existe pas de grammaire de type supérieur à i qui l’engendre
+
+
+# Chapitre 3 : Automates d'etats finis (AEF) ------------------------------------------------------------------------------------------
+    ## Un automate (ou système de reconnaissance) est une machine abstraite qui permet de reconnaître les mots d’un langage. Il prend en entrée un mot w et fournis une acceptation ou rejection
+
+    ##Automates d’états finis (AEF) Un automate d’états finis déterministe est un cinquplet A =(X, Q, q0, S, F) où :
+
+        S(p, a)=q signifie que l’automate réalise un déplacement (une transition) de l’état p vers l’état q en lisant la lettre a.
+        -S* successtion de transition de QxX* dans Q
+        -Un mot w est reconnu (accepté) par l'automate A ssi : 1- l’automate A lit le mot w à partir de q0 et atteint un état final.
+
+        -Le langage reconnu par l’automate A est l’ensemble
+                L(A) = {w appartient a X*/ S*(q0, w) appartient a F}.
+        -langage L sur X est régulier (ou reconnaissable) s’il existe au moins un automate d’états finis A ayant X comme alphabet d’entrée tel que L=L(A)
+
+        -On note Rec(X*) la famille des langages reconnaissables sur l’alphabet X.
+        -Deux automates d’états finis A1 et A2 sont équivalents, noté A1-=A2, si et seulement s’ils acceptent le même langage.
+        -Un langage peut être reconnu par plusieurs automates. Par contre un automate ne peut reconnaitre qu’un seul langage.
+
+        ## Un automate d’états fini est déterministe si et seulement si : à un état et à un symbole d’entrée la fonction S associe au plus une seule transition. (pas de choix à faire pour l’état suivant après la lecture d’un certain symbole.)
+            -dit complet ssi : à toute paire (q,a) appartient QxX, la fonction S associe exactement un état.(application fonctionnelle)( lire n’importe quel symbole à partir de n’importe quel état.)
+            -Un automate déterministe non complet ne permet pas de lire certains mots
+        ## non déterministes sont des automates où : l’on permet plusieurs transitions correspondant a à la même lettre : S QxX -> P(Q)
+        ## généralisé, les transitions directes peuvent être causées par des mots ou transition spantanees (ԑ-transitions.)(change d'etat sans lire un symbole) S : QxX*->P(Q)
+            -état q est accessible s'il existe un chemin de l'état initial de l'automate vers q
+            - état q est co-accessible s'il existe un chemin de l'état q vers un état final
+            -Un automate est émondé si tous ses états sont accessibles et co-accessibles.
+
+
+        ## transformer vers un DFA :  1-Transformer un automate généralisé vers un automate simple
+                                      2-Transformer l’automate simple vers un automate déterministe (Pour tout automate fini non déterministe il existe un automate fini déterministe équivalent)
+
+        ## La classe des langages réguliers est fermée par rapport aux opérations de l’union, la concaténation, l’étoile, le complément et le miroir.
+        Si L et M sont deux langages réguliers alors : L U M, L.M, L*, L et LR sont des langages réguliers.
+
+
+# Chapitre 5 : Les Expressions Régulières (ER)
+    #Une expression régulière (rationnelles) est une suite de caractères, appelée motif (ou pattern en anglais), qui décrit ou dénote un ensemble de mots.
+
+            Si r et s sont deux expressions régulières sur X décrivant respectivement les langages R et S alors :
+                •r+s est une expression régulière qui décrit le langage R U S
+                •r.s est une expression régulière qui décrit le langage R.S
+                •r* est une expression régulière qui décrit le langage R*
+                •(r) est une expression régulière qui décrit le langage R
+            -Deux expressions régulières E1 et E 2 sont équivalentes, notées E1E2, si et seulement si elles dénotent le même langage.
+
+            ## priorite :étoile>concaténation>addition
+            Un langage L sur un alphabet X est un langage rationnel si et seulement s’il existe une expression régulière E sur l’alphabet X qui le dénote
+             Rat(X*) la famille des langages rationnels sur X.
+
+
+    #Théorème de Kleene : L'ensemble des langages rationnels (décrits par des expressions régulières) sur un alphabet X est exactement l'ensemble des langages sur X reconnaissables par automate d’états finis
+            Rat(X*) = Rec(X*)
+        ## regex->automate : méthode de Thompson, de Glushkov, de Brzozowski (méthode des dérivées).
+
+        Les expressions régulières ont de nombreuses utilités en informatique : des contrôles,substitutions,des filtres,des découpages
+
+        lemme de pompe (l'Etoile): tout mot suffisamment long d'un langage régulier infini peut être pompé :
+                            -une partie centrale du mot peut être répétée un nombre quelconque de fois, et que chacun des mots produits appartient au langage
+        Si L est régulier alors il existe un entier k>0 tel que pour tout w appartient a L  et |w|>=k, il existe x, z appartenant X* et y appartenant a X+ tels que :
+            1) w= xyz 2) |xy|<=k 3) xyiz apparient a L pour tout i >0;
+
+Chapitre 6 : grammaire algébriques et Automates a pile :
+                Les langages réguliers :• sont simples• possèdent les bonnes propriétés requises théoriques et pratiques• ...mais pouvoir d’expression faible
+
+        ##Définition (Dérivation gauche/droite) : On dit qu’un mot s’obtient par dérivation gauche (respectivement par dérivation droite) s’il est obtenu à partir de l’axiome en dérivant toujours le non-terminal le plus à gauche (respectivement le plus à droite).
+
+         ## Un mot est ambiguë s’il possède plusieurs arbres de dérivations différents.L’ambiguité d’un mot implique l’existence de deux ou plusieurs dérivations gauche (droites) pour ce mot.
+         ## (Grammaire ambiguë) : Une grammaire est ambiguë si elle génère au moins un mot ambiguë.
+         ##Un langage de programmation doit avoir une grammaire non ambiguë car l’existence d’arbres de dérivations différents pour un même programme signifie qu’il y a plusieurs façons d’analyser ce programme, avec en général des résultats très différents.
+         ## (Ambiguïté inhérente) : On dit qu’un langage algébrique a une ambiguïté inhérente si toute grammaire qui l’engendre est ambiguë.
+         ##  Il n’existe pas d’algorithme qui permet de répondre est-ce que G est ambiguë?
+
+    #Automates à Pile Les automates à pile sont les reconnaisseurs des langages algébriques. (autorise les ԑ transition)(memoire auxiliaire :pile)
+
+    #(Configuration d'une pile) : configuration (a, q, w). le sommet de pile est a ,on est sur l'etat q et reste a lire w
+         ##dérive directement (aB, p, w), notée : (au, q, aw) => (aB, p, w) si uqa -> Bp
+
+         ##Automates à Pile Deux modes de reconnaissances : par état final / par pile vide
+         ##Les langages reconnus par les automates à pile correspondent à la classe des langages algébriques.
+         ##  Pour toute grammaire algébrique G=(T, N, S, P) il existe un automate à pile qui reconnaît L(G) par pile vide.
+         ##Pour tout automate à Pile il existe une grammaire algébrique
+         ##La classe des langages algébriques est fermée par rapport aux opérations régulières :union, concaténation et l’étoile.
+         ##La classe des langages algébriques n’est pas fermée par rapport à l’intersection et par rapport au complément :
+
+         L (algebrique) INTER R(Regulier) est algebrique
+         mirroir d'un language algebrique est algebrique
